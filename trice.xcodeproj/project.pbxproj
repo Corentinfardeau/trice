@@ -14,6 +14,19 @@
 		195537CF1C1EEF0700713AF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195537CD1C1EEF0700713AF5 /* LaunchScreen.storyboard */; };
 		195537DA1C1EEF0700713AF5 /* triceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537D91C1EEF0700713AF5 /* triceTests.swift */; };
 		195537E51C1EEF0700713AF5 /* triceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537E41C1EEF0700713AF5 /* triceUITests.swift */; };
+		388830FB1C1EFC6C0023DB50 /* Bolts in Frameworks */ = {isa = PBXBuildFile; fileRef = 388830C31C1EFC6C0023DB50 /* Bolts */; };
+		388830FC1C1EFC6C0023DB50 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 388830D71C1EFC6C0023DB50 /* Info.plist */; };
+		388831021C1EFD570023DB50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831011C1EFD570023DB50 /* AudioToolbox.framework */; };
+		388831041C1EFD620023DB50 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831031C1EFD620023DB50 /* CFNetwork.framework */; };
+		388831061C1EFD6B0023DB50 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831051C1EFD6B0023DB50 /* CoreGraphics.framework */; };
+		388831081C1EFD760023DB50 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831071C1EFD760023DB50 /* CoreLocation.framework */; };
+		3888310A1C1EFD8E0023DB50 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831091C1EFD8E0023DB50 /* QuartzCore.framework */; };
+		3888310C1C1EFD970023DB50 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3888310B1C1EFD970023DB50 /* Security.framework */; };
+		3888310E1C1EFD9F0023DB50 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3888310D1C1EFD9F0023DB50 /* StoreKit.framework */; };
+		388831101C1EFDA70023DB50 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3888310F1C1EFDA70023DB50 /* SystemConfiguration.framework */; };
+		388831121C1EFDB60023DB50 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831111C1EFDB60023DB50 /* libz.tbd */; };
+		388831141C1EFDBF0023DB50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831131C1EFDBF0023DB50 /* libsqlite3.tbd */; };
+		388831161C1EFF4C0023DB50 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831151C1EFF4C0023DB50 /* Parse.framework */; };
 		89B18218CA4C3CA3BC033059 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8820E29E1715F1FEE68C58BC /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +62,38 @@
 		195537E41C1EEF0700713AF5 /* triceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = triceUITests.swift; sourceTree = "<group>"; };
 		195537E61C1EEF0700713AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		365083E4AFE81887EA83236A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		388830C31C1EFC6C0023DB50 /* Bolts */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = Bolts; sourceTree = "<group>"; };
+		388830C41C1EFC6C0023DB50 /* BFAppLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAppLink.h; sourceTree = "<group>"; };
+		388830C51C1EFC6C0023DB50 /* BFAppLinkNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAppLinkNavigation.h; sourceTree = "<group>"; };
+		388830C61C1EFC6C0023DB50 /* BFAppLinkResolving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAppLinkResolving.h; sourceTree = "<group>"; };
+		388830C71C1EFC6C0023DB50 /* BFAppLinkReturnToRefererController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAppLinkReturnToRefererController.h; sourceTree = "<group>"; };
+		388830C81C1EFC6C0023DB50 /* BFAppLinkReturnToRefererView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAppLinkReturnToRefererView.h; sourceTree = "<group>"; };
+		388830C91C1EFC6C0023DB50 /* BFAppLinkTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFAppLinkTarget.h; sourceTree = "<group>"; };
+		388830CA1C1EFC6C0023DB50 /* BFCancellationToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCancellationToken.h; sourceTree = "<group>"; };
+		388830CB1C1EFC6C0023DB50 /* BFCancellationTokenRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCancellationTokenRegistration.h; sourceTree = "<group>"; };
+		388830CC1C1EFC6C0023DB50 /* BFCancellationTokenSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCancellationTokenSource.h; sourceTree = "<group>"; };
+		388830CD1C1EFC6C0023DB50 /* BFDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFDefines.h; sourceTree = "<group>"; };
+		388830CE1C1EFC6C0023DB50 /* BFExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFExecutor.h; sourceTree = "<group>"; };
+		388830CF1C1EFC6C0023DB50 /* BFMeasurementEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFMeasurementEvent.h; sourceTree = "<group>"; };
+		388830D01C1EFC6C0023DB50 /* BFTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFTask.h; sourceTree = "<group>"; };
+		388830D11C1EFC6C0023DB50 /* BFTaskCompletionSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFTaskCompletionSource.h; sourceTree = "<group>"; };
+		388830D21C1EFC6C0023DB50 /* BFURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFURL.h; sourceTree = "<group>"; };
+		388830D31C1EFC6C0023DB50 /* BFWebViewAppLinkResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWebViewAppLinkResolver.h; sourceTree = "<group>"; };
+		388830D41C1EFC6C0023DB50 /* Bolts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bolts.h; sourceTree = "<group>"; };
+		388830D51C1EFC6C0023DB50 /* BoltsVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoltsVersion.h; sourceTree = "<group>"; };
+		388830D71C1EFC6C0023DB50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
+		388830D81C1EFC6C0023DB50 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		388831011C1EFD570023DB50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		388831031C1EFD620023DB50 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		388831051C1EFD6B0023DB50 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		388831071C1EFD760023DB50 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		388831091C1EFD8E0023DB50 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3888310B1C1EFD970023DB50 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3888310D1C1EFD9F0023DB50 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3888310F1C1EFDA70023DB50 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		388831111C1EFDB60023DB50 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		388831131C1EFDBF0023DB50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		388831151C1EFF4C0023DB50 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8820E29E1715F1FEE68C58BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F298636D8057730B8C57B8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,7 +103,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388831161C1EFF4C0023DB50 /* Parse.framework in Frameworks */,
+				388831141C1EFDBF0023DB50 /* libsqlite3.tbd in Frameworks */,
+				388831121C1EFDB60023DB50 /* libz.tbd in Frameworks */,
+				388831101C1EFDA70023DB50 /* SystemConfiguration.framework in Frameworks */,
+				3888310E1C1EFD9F0023DB50 /* StoreKit.framework in Frameworks */,
+				3888310C1C1EFD970023DB50 /* Security.framework in Frameworks */,
+				3888310A1C1EFD8E0023DB50 /* QuartzCore.framework in Frameworks */,
+				388831081C1EFD760023DB50 /* CoreLocation.framework in Frameworks */,
+				388831061C1EFD6B0023DB50 /* CoreGraphics.framework in Frameworks */,
+				388831041C1EFD620023DB50 /* CFNetwork.framework in Frameworks */,
+				388831021C1EFD570023DB50 /* AudioToolbox.framework in Frameworks */,
 				89B18218CA4C3CA3BC033059 /* Pods.framework in Frameworks */,
+				388830FB1C1EFC6C0023DB50 /* Bolts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +139,8 @@
 		195537B81C1EEF0700713AF5 = {
 			isa = PBXGroup;
 			children = (
+				388831151C1EFF4C0023DB50 /* Parse.framework */,
+				388830DA1C1EFC6C0023DB50 /* Bolts.framework */,
 				195537C31C1EEF0700713AF5 /* trice */,
 				195537D81C1EEF0700713AF5 /* triceTests */,
 				195537E31C1EEF0700713AF5 /* triceUITests */,
@@ -141,9 +200,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		388830D61C1EFC6C0023DB50 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				388830C41C1EFC6C0023DB50 /* BFAppLink.h */,
+				388830C51C1EFC6C0023DB50 /* BFAppLinkNavigation.h */,
+				388830C61C1EFC6C0023DB50 /* BFAppLinkResolving.h */,
+				388830C71C1EFC6C0023DB50 /* BFAppLinkReturnToRefererController.h */,
+				388830C81C1EFC6C0023DB50 /* BFAppLinkReturnToRefererView.h */,
+				388830C91C1EFC6C0023DB50 /* BFAppLinkTarget.h */,
+				388830CA1C1EFC6C0023DB50 /* BFCancellationToken.h */,
+				388830CB1C1EFC6C0023DB50 /* BFCancellationTokenRegistration.h */,
+				388830CC1C1EFC6C0023DB50 /* BFCancellationTokenSource.h */,
+				388830CD1C1EFC6C0023DB50 /* BFDefines.h */,
+				388830CE1C1EFC6C0023DB50 /* BFExecutor.h */,
+				388830CF1C1EFC6C0023DB50 /* BFMeasurementEvent.h */,
+				388830D01C1EFC6C0023DB50 /* BFTask.h */,
+				388830D11C1EFC6C0023DB50 /* BFTaskCompletionSource.h */,
+				388830D21C1EFC6C0023DB50 /* BFURL.h */,
+				388830D31C1EFC6C0023DB50 /* BFWebViewAppLinkResolver.h */,
+				388830D41C1EFC6C0023DB50 /* Bolts.h */,
+				388830D51C1EFC6C0023DB50 /* BoltsVersion.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		388830D91C1EFC6C0023DB50 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				388830D81C1EFC6C0023DB50 /* module.modulemap */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		388830DA1C1EFC6C0023DB50 /* Bolts.framework */ = {
+			isa = PBXGroup;
+			children = (
+				388830C31C1EFC6C0023DB50 /* Bolts */,
+				388830D61C1EFC6C0023DB50 /* Headers */,
+				388830D71C1EFC6C0023DB50 /* Info.plist */,
+				388830D91C1EFC6C0023DB50 /* Modules */,
+			);
+			path = Bolts.framework;
+			sourceTree = "<group>";
+		};
 		3DEFFE174A5E9802189647E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				388831131C1EFDBF0023DB50 /* libsqlite3.tbd */,
+				388831111C1EFDB60023DB50 /* libz.tbd */,
+				3888310F1C1EFDA70023DB50 /* SystemConfiguration.framework */,
+				3888310D1C1EFD9F0023DB50 /* StoreKit.framework */,
+				3888310B1C1EFD970023DB50 /* Security.framework */,
+				388831091C1EFD8E0023DB50 /* QuartzCore.framework */,
+				388831071C1EFD760023DB50 /* CoreLocation.framework */,
+				388831051C1EFD6B0023DB50 /* CoreGraphics.framework */,
+				388831031C1EFD620023DB50 /* CFNetwork.framework */,
+				388831011C1EFD570023DB50 /* AudioToolbox.framework */,
 				8820E29E1715F1FEE68C58BC /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -256,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388830FC1C1EFC6C0023DB50 /* Info.plist in Resources */,
 				195537CF1C1EEF0700713AF5 /* LaunchScreen.storyboard in Resources */,
 				195537CC1C1EEF0700713AF5 /* Assets.xcassets in Resources */,
 				195537CA1C1EEF0700713AF5 /* Main.storyboard in Resources */,
@@ -475,8 +589,17 @@
 			baseConfigurationReference = 365083E4AFE81887EA83236A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = trice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Bolts.framework",
+					"$(PROJECT_DIR)/Parse.framework",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = hetic.trice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -487,8 +610,17 @@
 			baseConfigurationReference = F5F298636D8057730B8C57B8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = trice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Bolts.framework",
+					"$(PROJECT_DIR)/Parse.framework",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = hetic.trice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
