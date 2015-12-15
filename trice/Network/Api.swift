@@ -217,6 +217,7 @@ class Api {
         let query = PFQuery(className: "Post")
         
         query.whereKey("expiresAt", greaterThan: NSDate())
+        query.orderByDescending("expiresAt")
         
         query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
             
