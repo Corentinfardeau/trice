@@ -23,6 +23,8 @@ class Api {
         user.username = username
         user.password = password
         user.email = email
+        user["hoursLeft"] = 3
+        
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
             if succeeded {
@@ -62,29 +64,72 @@ class Api {
         return PFUser.currentUser()
     }
     
-
-    // MARK: - Likes
-    
-    func getLikes(successCallback: (likes: [AnyObject]) -> (), errorCallback: (error: NSError) -> ()) {
+    func userHasHoursLeft() -> Bool {
         
         if let currentUser = PFUser.currentUser() {
-            currentUser.fetchInBackgroundWithBlock { (user: PFObject?, error: NSError?) -> Void in
-                if let user = user {
-                    
-                    if let likes = user["likes"]! as? [AnyObject] {
-                    
-                        successCallback(likes: likes)
-                        
-                    } else {
-                        print("Api#getLikes() Coundnt get likes array for user \(user)")
-                    }
-
-                } else {
-                    errorCallback(error: error!)
-                }
+            
+            if let hoursLeft = currentUser["hoursLeft"] as? Int {
+                
+                return hoursLeft != 0
+                
             }
         }
         
+        return false
+    }
+    
+    
+    func decreaseUserHoursLeft(successCallback: () -> (), errorCallback: (error: NSError) -> ()) {
+        
+        if self.userHasHoursLeft() {
+            
+            let currentUser = PFUser.currentUser()!
+            
+            if var hoursLeft = currentUser["hoursLeft"] as? Int {
+
+                hoursLeft -= 1
+                
+                currentUser["hoursLeft"] = hoursLeft
+                
+                
+                currentUser.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                    if success {
+                        successCallback()
+                        
+                    } else {
+                        errorCallback(error: error!)
+                    }
+                })
+                
+            }
+            
+        }
+    }
+    
+
+    // MARK: - Likes
+    
+    func getLikes(successCallback: (likes: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+        
+        if let currentUser = PFUser.currentUser() {
+            
+            let relation = currentUser.relationForKey("likes")
+            
+            let query = relation.query()
+            
+            query.orderByDescending("expiresAt")
+            
+            query.findObjectsInBackgroundWithBlock({ (likes: [PFObject]?, error: NSError?) -> Void in
+                if let likes = likes {
+                    successCallback(likes: likes)
+                } else {
+                    errorCallback(error: error!)
+                }
+            })
+            
+        } else {
+            print("Api#getLikes() Error : No user currently loggedIn")
+        }
     }
     
     
@@ -92,47 +137,57 @@ class Api {
 
         if let currentUser = PFUser.currentUser() {
             
-            if var likes = currentUser["likes"]! as? [PFObject] {
-        
-                likes  += [post]
+            let relation = currentUser.relationForKey("likes")
+            relation.addObject(post)
                 
-                currentUser["likes"] = likes
-                
-                currentUser.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-                    if success {
-                        successCallback(likes: likes)
-                    } else {
-                        errorCallback(error: error!)
-                    }
-                })
-                
-            }
+            currentUser.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    
+                    self.getLikes(
+                        { likes in
+                            successCallback(likes: likes)
+                        },
+                        errorCallback: { (error) -> () in
+                            errorCallback(error: error)
+                        }
+                    )
+                    
+                } else {
+                    errorCallback(error: error!)
+                }
+            })
     
+        } else {
+            print("Api#addLike() Error : No user currently loggedIn")
         }
     }
     
     
-    func deleteLike(post: AnyObject, successCallback: (likes: [AnyObject]) -> (), errorCallback: (error: NSError) -> ()) {
+    func deleteLike(post: PFObject, successCallback: (likes: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
         if let currentUser = PFUser.currentUser() {
             
-            if var likes = currentUser["likes"]! as? [AnyObject] {
-                
-                likes = likes.filter({ (like) -> Bool in
-                    return like.objectId != post.objectId
-                })
-                
-                currentUser["likes"] = likes
-                
-                currentUser.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
-                    if success {
-                        successCallback(likes: likes)
-                    } else {
-                        errorCallback(error: error!)
-                    }
-                })
-                
-            }
+            let relation = currentUser.relationForKey("likes")
+            relation.removeObject(post)
             
+            currentUser.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    
+                    self.getLikes(
+                        { likes in
+                            successCallback(likes: likes)
+                        },
+                        errorCallback: { (error) -> () in
+                            errorCallback(error: error)
+                        }
+                    )
+                    
+                } else {
+                    errorCallback(error: error!)
+                }
+            })
+            
+        } else {
+            print("Api#deleteLike() Error : No user currently loggedIn")
         }
     }
     
@@ -220,27 +275,53 @@ class Api {
         }
     }
     
+    
+    
     func upVotePost(post: PFObject, successCallback: (post: PFObject) -> (), errorCallback: (error: NSError) -> ()) {
         
         let newExpiresAt = self.addHoursToDate(post["expiresAt"] as! NSDate, hours: 1)
         
-        self.editPost(post, title: nil, link: nil, expiresAt: newExpiresAt,
-            successCallback: { post in
-                
-                self.addLike(post,
-                    successCallback: { likes in
-                        successCallback(post: post)
-                    },
-                    errorCallback: { error in
-                        errorCallback(error: error)
-                    }
-                )
-                
-            },
-            errorCallback: { error in
-                errorCallback(error: error)
-            }
-        )
+        if self.userHasHoursLeft() {
+            
+            self.editPost(post, title: nil, link: nil, expiresAt: newExpiresAt,
+                successCallback: { post in
+                    
+                    self.addLike(post,
+                        successCallback: { likes in
+                            
+                            self.decreaseUserHoursLeft(
+                                {
+                                    
+                                    successCallback(post: post)
+                                    
+                                },
+                                errorCallback: { error in
+                                    
+                                    errorCallback(error: error)
+                                    
+                                }
+                            )
+                            
+                        },
+                        errorCallback: { error in
+                            errorCallback(error: error)
+                        }
+                    )
+                    
+                },
+                errorCallback: { error in
+                    errorCallback(error: error)
+                }
+            )
+            
+            
+        } else {
+    
+            errorCallback(error: NSError(domain: "Trice", code: 311, userInfo: [
+                "NSLocalizedDescription": "User has no hours left"
+            ]))
+    
+        }
     }
 }
 
