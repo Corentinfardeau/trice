@@ -13,6 +13,7 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     
     @IBOutlet weak var wallTableView: UITableView!
+    let gradientLayer = CAGradientLayer()
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -24,9 +25,10 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     var posts: [PFObject]?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+        super.viewDidLoad()
+        
+        wallTableView.tableFooterView = UIView()
         wallTableView.addSubview(refreshControl)
         
         Api.sharedInstance.getWallPosts(
@@ -83,6 +85,10 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let posts = self.posts {
             cell.setPost(posts[indexPath.row])
         }
+        
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
         
         return cell
         

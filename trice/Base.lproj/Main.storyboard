@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Wall-->
+        <!--Trice-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="WallController" customModule="trice" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,22 +30,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCa-K9-Rfb">
-                                                    <rect key="frame" x="18" y="8" width="564" height="27"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCa-K9-Rfb">
+                                                    <rect key="frame" x="8" y="8" width="584" height="20.5"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uK-wI-xzo">
-                                                    <rect key="frame" x="18" y="48" width="564" height="21"/>
+                                                    <rect key="frame" x="8" y="32" width="564" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5z-aD-Cn3">
+                                                    <rect key="frame" x="8" y="56" width="42" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="gCa-K9-Rfb" firstAttribute="top" secondItem="bTA-IT-6qj" secondAttribute="topMargin" id="LsR-66-8da"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gCa-K9-Rfb" secondAttribute="trailing" id="iHw-61-dGm"/>
+                                                <constraint firstItem="gCa-K9-Rfb" firstAttribute="leading" secondItem="bTA-IT-6qj" secondAttribute="leadingMargin" id="ia9-o4-buo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
@@ -75,8 +87,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Wall" id="HEn-Lh-JJJ">
+                    <navigationItem key="navigationItem" title="Trice" id="HEn-Lh-JJJ">
                         <barButtonItem key="rightBarButtonItem" title="New" id="TGq-XG-iLV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="S15-vW-WHr" kind="presentation" id="qsY-Je-in1"/>
                             </connections>
@@ -126,6 +139,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="MC5-JD-NCG">
                         <barButtonItem key="rightBarButtonItem" title="New" id="aQo-na-8GO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="S15-vW-WHr" kind="presentation" id="vyH-7L-50g"/>
                             </connections>
@@ -171,6 +185,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bookmarks" id="0OT-Ti-9UJ">
                         <barButtonItem key="rightBarButtonItem" title="New" id="YaM-H8-D2t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="S15-vW-WHr" kind="presentation" id="QyO-0F-UQU"/>
                             </connections>
@@ -207,7 +222,7 @@
         <!--Wall-->
         <scene sceneID="HNn-Ly-Lhz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lkk-CS-rz6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lkk-CS-rz6" customClass="CustomNavbar" customModule="trice" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wall" id="WN0-LG-1MV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FFl-Z4-eyJ">
@@ -227,7 +242,7 @@
         <!--Bookmarks-->
         <scene sceneID="apP-Jg-4H7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JIg-jz-nq9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JIg-jz-nq9" customClass="CustomNavbar" customModule="trice" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bookmarks" id="fbm-Fp-J8e"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P11-b7-sVc">
@@ -247,7 +262,7 @@
         <!--Profile-->
         <scene sceneID="3JC-1h-t4P">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mmS-I3-gHH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mmS-I3-gHH" customClass="CustomNavbar" customModule="trice" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="V7W-3Z-694"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PzP-Jn-B3o">
