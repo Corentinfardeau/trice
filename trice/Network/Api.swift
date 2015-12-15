@@ -13,6 +13,27 @@ class Api {
     static var sharedInstance = Api()
     
     
+    // MARK: - LocalStorage
+    
+    func saveUserInLocal(user: PFUser) {
+        user.pinInBackgroundWithName("me")
+    }
+    
+    func getUserFromLocal() -> PFObject? {
+        let query = PFQuery(className: "User")
+        
+        query.fromLocalDatastore()
+        query.fromPinWithName("me")
+        
+        do {
+            return try query.getFirstObject()
+        } catch {
+            return nil
+        }
+        
+    }
+    
+    
     // MARK: - User account
     
     func signUp(email: String, password: String, username: String, successCallback: (user: PFUser) -> (), errorCallback: (error: NSError) -> ()) {
