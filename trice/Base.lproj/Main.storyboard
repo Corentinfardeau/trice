@@ -373,6 +373,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="likeAuthorLabel" destination="jqE-QZ-oE4" id="kta-eJ-HPR"/>
                                             <outlet property="likeLinkLabel" destination="QsL-5c-B8u" id="Jb1-xF-AU2"/>
                                             <outlet property="likeTitleLabel" destination="x8b-hb-Xye" id="oXj-o2-Z48"/>
                                         </connections>

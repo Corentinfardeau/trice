@@ -17,6 +17,7 @@ class BookmarkTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likeTitleLabel: UILabel!
     @IBOutlet weak var likeLinkLabel: UILabel!
+    @IBOutlet weak var likeAuthorLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -33,6 +34,15 @@ class BookmarkTableViewCell: UITableViewCell {
         self.like = like
         likeTitleLabel.text = like["title"] as? String
         likeLinkLabel.text = getBaseUrl(like["link"] as! String)
+        
+        like["author"].fetchIfNeededInBackgroundWithBlock { (author: PFObject?, error: NSError?) -> Void in
+            
+            if let author = author {
+                self.likeAuthorLabel.text = author["username"] as? String
+            }
+            
+        }
+
     }
     
     
