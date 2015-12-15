@@ -11,10 +11,9 @@ import Parse
 
 class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var likes: [PFObject]?
+    var likes: [PFObject]?
     
     @IBOutlet weak var bookmarkTableView: UITableView!
-    
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -30,7 +29,6 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         bookmarkTableView.tableFooterView = UIView()
         bookmarkTableView.addSubview(refreshControl)
         
-        
         getLikes()
     }
     
@@ -44,7 +42,6 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         Api.sharedInstance.getLikes(
             { likes in
                 
-                print(likes)
                 self.likes = likes
                 self.bookmarkTableView.reloadData()
                 
@@ -64,6 +61,19 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         getLikes()
         self.bookmarkTableView.reloadData()
         refreshControl.endRefreshing()
+    }
+    
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
+        [UITableViewRowAction]? {
+            let addTime = UITableViewRowAction(style: .Normal, title: "+1h") {_,_ in
+                
+            }
+            return [addTime]
     }
     
     func tableView(bookmarkTableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -32,7 +32,17 @@ class BookmarkTableViewCell: UITableViewCell {
     func setLike(like: PFObject) {
         self.like = like
         likeTitleLabel.text = like["title"] as? String
-        likeLinkLabel.text = like["link"] as? String
+        likeLinkLabel.text = getBaseUrl(like["link"] as! String)
+    }
+    
+    
+    
+    
+    // MARK: - Helpers
+    
+    func getBaseUrl(url: String) -> String {
+        let baseUrl = NSURL(string: url)
+        return "\(baseUrl!.host!)"
     }
 
 }
