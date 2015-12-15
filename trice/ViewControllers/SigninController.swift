@@ -26,14 +26,43 @@ class SigninController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func signinClickAction(sender: AnyObject) {
+        
+        if !passwordTextField.text!.isEmpty && !pseudoTextField.text!.isEmpty {
+           
+            let password = passwordTextField.text!
+            let username = pseudoTextField.text!
+            
+            Api.sharedInstance.loginIn(username, password: password,
+                
+                successCallback: { user in
+                    
+                    Api.sharedInstance.saveUserInLocal(user)
+                
+                    self.performSegueWithIdentifier("signinSegue", sender: nil)
+                
+                },
+                errorCallback: { error in
+                    
+                    self.showError("Logins invalides")
+                    
+                }
+            )
+            
+            
+        } else {
+            showError("Informations manquantes.")
+        }
+        
     }
-    */
-
+    
+    
+    func showError(message: String) {
+        errorLabel.text = message
+    }
+    
+    func hideError() {
+        errorLabel.text = ""
+    }
+    
 }
