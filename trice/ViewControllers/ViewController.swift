@@ -22,7 +22,6 @@ class ViewController: UIViewController {
                 for post in posts {
                     print(post.objectId)
                     print(post["title"])
-                    print(post["expiresAt"])
                 }
                 
             },
@@ -30,6 +29,7 @@ class ViewController: UIViewController {
                 
             }
         )
+
     }
 
     override func didReceiveMemoryWarning() {

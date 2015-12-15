@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		195537C51C1EEF0700713AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537C41C1EEF0700713AF5 /* AppDelegate.swift */; };
-		195537C71C1EEF0700713AF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537C61C1EEF0700713AF5 /* ViewController.swift */; };
 		195537CA1C1EEF0700713AF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195537C81C1EEF0700713AF5 /* Main.storyboard */; };
 		195537CC1C1EEF0700713AF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195537CB1C1EEF0700713AF5 /* Assets.xcassets */; };
 		195537CF1C1EEF0700713AF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195537CD1C1EEF0700713AF5 /* LaunchScreen.storyboard */; };
@@ -27,6 +26,7 @@
 		388831121C1EFDB60023DB50 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831111C1EFDB60023DB50 /* libz.tbd */; };
 		388831141C1EFDBF0023DB50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831131C1EFDBF0023DB50 /* libsqlite3.tbd */; };
 		388831161C1EFF4C0023DB50 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831151C1EFF4C0023DB50 /* Parse.framework */; };
+		389AF0BB1C2017D700319778 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389AF0BA1C2017D700319778 /* ViewController.swift */; };
 		38F563291C1F329100FA6D5A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F563261C1F329100FA6D5A /* Api.swift */; };
 		89B18218CA4C3CA3BC033059 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8820E29E1715F1FEE68C58BC /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -51,7 +51,6 @@
 /* Begin PBXFileReference section */
 		195537C11C1EEF0700713AF5 /* trice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		195537C41C1EEF0700713AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		195537C61C1EEF0700713AF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		195537C91C1EEF0700713AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		195537CB1C1EEF0700713AF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		195537CE1C1EEF0700713AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		388831111C1EFDB60023DB50 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		388831131C1EFDBF0023DB50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		388831151C1EFF4C0023DB50 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		389AF0BA1C2017D700319778 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		38F563261C1F329100FA6D5A /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		8820E29E1715F1FEE68C58BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F298636D8057730B8C57B8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,9 +165,11 @@
 		195537C31C1EEF0700713AF5 /* trice */ = {
 			isa = PBXGroup;
 			children = (
+				389AF0BC1C2017F700319778 /* Models */,
 				38F563251C1F329100FA6D5A /* Network */,
 				195537C41C1EEF0700713AF5 /* AppDelegate.swift */,
-				195537C61C1EEF0700713AF5 /* ViewController.swift */,
+				389AF0B81C2017D700319778 /* CustomViews */,
+				389AF0B91C2017D700319778 /* ViewControllers */,
 				195537C81C1EEF0700713AF5 /* Main.storyboard */,
 				195537CB1C1EEF0700713AF5 /* Assets.xcassets */,
 				195537CD1C1EEF0700713AF5 /* LaunchScreen.storyboard */,
@@ -245,6 +247,28 @@
 				388830D91C1EFC6C0023DB50 /* Modules */,
 			);
 			path = Bolts.framework;
+			sourceTree = "<group>";
+		};
+		389AF0B81C2017D700319778 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		389AF0B91C2017D700319778 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				389AF0BA1C2017D700319778 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		389AF0BC1C2017F700319778 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		38F563251C1F329100FA6D5A /* Network */ = {
@@ -456,8 +480,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				195537C71C1EEF0700713AF5 /* ViewController.swift in Sources */,
 				195537C51C1EEF0700713AF5 /* AppDelegate.swift in Sources */,
+				389AF0BB1C2017D700319778 /* ViewController.swift in Sources */,
 				38F563291C1F329100FA6D5A /* Api.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,24 +65,15 @@ class Api {
 
     // MARK: - Likes
     
-    func getLikes(successCallback: (likes: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+    func getLikes(successCallback: (likes: [AnyObject]) -> (), errorCallback: (error: NSError) -> ()) {
         
         if let currentUser = PFUser.currentUser() {
             currentUser.fetchInBackgroundWithBlock { (user: PFObject?, error: NSError?) -> Void in
                 if let user = user {
                     
-                    if let likes = user["likes"] as? [AnyObject] {
-                        
-                        var newLikes = [PFObject]()
-                        
-                        for like in likes {
-                            print(like)
-                            // le parsing ne marche pas ici. checker si je fais bien comme il faut avec mon array de pointers
-                            newLikes.append(like as! PFObject)
-                        }
-                        
-                        
-                        successCallback(likes: newLikes)
+                    if let likes = user["likes"]! as? [AnyObject] {
+                    
+                        successCallback(likes: likes)
                         
                     } else {
                         print("Api#getLikes() Coundnt get likes array for user \(user)")
@@ -121,10 +112,10 @@ class Api {
     }
     
     
-    func deleteLike(post: PFObject, successCallback: (likes: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+    func deleteLike(post: AnyObject, successCallback: (likes: [AnyObject]) -> (), errorCallback: (error: NSError) -> ()) {
         if let currentUser = PFUser.currentUser() {
             
-            if var likes = currentUser["likes"]! as? [PFObject] {
+            if var likes = currentUser["likes"]! as? [AnyObject] {
                 
                 likes = likes.filter({ (like) -> Bool in
                     return like.objectId != post.objectId
