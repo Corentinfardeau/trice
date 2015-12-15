@@ -71,7 +71,7 @@ class SignupController: UIViewController {
                             break
 
                         default:
-                            self.showError("Problème de connection, veuillez réessayer ultérieurement.")
+                            self.showError("Erreur de connexion au server.")
                         }
 
                     }
@@ -80,11 +80,11 @@ class SignupController: UIViewController {
 
 
             } else {
-                showError("invalid Email")
+                showError("Email invalide.")
             }
 
         } else {
-            showError("Informations manquantes")
+            showError("Informations manquantes.")
         }
 
 
