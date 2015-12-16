@@ -18,11 +18,14 @@ class SigninController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        formView.layer.cornerRadius = 3.0
-        signinButton.layer.cornerRadius = 3.0
+        setUI()
+        passwordTextField.delegate = self
+        pseudoTextField.delegate = self
+        pseudoTextField.addTarget(self, action: "pseudoTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        passwordTextField.addTarget(self, action: "passwordTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector : Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object : nil)
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +47,15 @@ class SigninController: UIViewController, UITextFieldDelegate {
         passwordTextField.text = ""
         
     }
-
+    
+    func pseudoTextFieldDidChange(pseudoTextField: UITextField) {
+        checkForm()
+    }
+    
+    func passwordTextFieldDidChange(pseudoTextField: UITextField) {
+        checkForm()
+    }
+        
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -83,6 +94,28 @@ class SigninController: UIViewController, UITextFieldDelegate {
             showAlert("Informations manquantes.")
         }
         
+    }
+    
+    // MARK: - UI
+    
+    func setUI(){
+        formView.layer.cornerRadius = 3.0
+        signinButton.layer.cornerRadius = 3.0
+        signinButton.userInteractionEnabled = false
+        signinButton.alpha = 0.5
+    }
+    
+    // MARK: - Check form
+    func checkForm(){
+        
+        if(passwordTextField.text != "" && pseudoTextField.text != ""){
+            signinButton.userInteractionEnabled = true
+            signinButton.alpha = 1
+        }else{
+            signinButton.userInteractionEnabled = false
+            signinButton.alpha = 0.5
+        }
+
     }
     
     // MARK: - Alert

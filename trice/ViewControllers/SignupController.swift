@@ -8,16 +8,24 @@
 
 import UIKit
 
-class SignupController: UIViewController {
+class SignupController: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
-
+    @IBOutlet weak var formView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setUI()
+        
+        mailTextField.delegate = self
+        passwordTextField.delegate = self
+        pseudoTextField.delegate = self
+        mailTextField.addTarget(self, action: "mailTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        pseudoTextField.addTarget(self, action: "pseudoTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        passwordTextField.addTarget(self, action: "passwordTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +83,39 @@ class SignupController: UIViewController {
 
         } else {
             showAlert("Missing Informations.")
+        }
+        
+    }
+    
+    func pseudoTextFieldDidChange(pseudoTextField: UITextField) {
+        checkForm()
+    }
+    
+    func passwordTextFieldDidChange(pseudoTextField: UITextField) {
+        checkForm()
+    }
+    
+    func mailTextFieldDidChange(pseudoTextField: UITextField) {
+        checkForm()
+    }
+    
+    // MARK: - UI
+    func setUI(){
+        signupButton.layer.cornerRadius = 3.0
+        formView.layer.cornerRadius = 3.0
+        signupButton.userInteractionEnabled = false
+        signupButton.alpha = 0.5
+    }
+    
+    // MARK: - Check form
+    func checkForm(){
+        
+        if(passwordTextField.text != "" && pseudoTextField.text != ""){
+            signupButton.userInteractionEnabled = true
+            signupButton.alpha = 1
+        }else{
+            signupButton.userInteractionEnabled = false
+            signupButton.alpha = 0.5
         }
         
     }
