@@ -112,6 +112,8 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
                         default:
                             break
                         }
+                        
+                        cell.userInteractionEnabled = true
                     }
                 )
             }
