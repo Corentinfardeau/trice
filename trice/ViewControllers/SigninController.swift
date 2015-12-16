@@ -51,25 +51,24 @@ class SigninController: UIViewController {
                 },
                 errorCallback: { error in
                     
-                    self.showError("Logins invalides")
+                    self.showAlert("Logins invalides")
                     
                 }
             )
             
             
         } else {
-            showError("Informations manquantes.")
+            showAlert("Informations manquantes.")
         }
         
     }
     
+    // MARK: - Alert
     
-    func showError(message: String) {
-        errorLabel.text = message
-    }
-    
-    func hideError() {
-        errorLabel.text = ""
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }

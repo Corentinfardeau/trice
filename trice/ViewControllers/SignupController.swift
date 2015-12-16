@@ -29,8 +29,6 @@ class SignupController: UIViewController {
 
     @IBAction func signupClickAction(sender: AnyObject) {
 
-        hideError()
-
         if !mailTextField.text!.isEmpty && !passwordTextField.text!.isEmpty && !pseudoTextField.text!.isEmpty {
 
             let validEmail = mailTextField.text!.isEmail
@@ -52,15 +50,15 @@ class SignupController: UIViewController {
                         switch error.code {
 
                         case 202:
-                            self.showError("This username is unavailable.")
+                            self.showAlert("This username is unavailable.")
                             break
 
                         case 203:
-                            self.showError("This email address is unavailable.")
+                            self.showAlert("This email address is unavailable.")
                             break
 
                         default:
-                            self.showError("Server connection error :(")
+                            self.showAlert("Server connection error :(")
                         }
 
                     }
@@ -69,28 +67,21 @@ class SignupController: UIViewController {
 
 
             } else {
-                showError("Invalid email address.")
+                showAlert("Invalid email address.")
             }
 
         } else {
-            showError("Missing Informations.")
+            showAlert("Missing Informations.")
         }
-
-
-
-        print(pseudoTextField.text)
-        print(passwordTextField.text)
-        print(mailTextField.text)
-        print(mailTextField.text?.isEmail)
+        
     }
-
-
-    func showError(message: String) {
-        errorLabel.text = message
-    }
-
-    func hideError() {
-        errorLabel.text = ""
+    
+    // MARK: - Alert
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }
