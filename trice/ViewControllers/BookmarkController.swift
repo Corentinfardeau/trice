@@ -47,7 +47,13 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
                 
             },
             errorCallback: { error in
-                
+                switch error.code {
+                case 100:
+                    self.showAlert("No Internet connection ;(")
+                    break
+                default:
+                    break
+                }
             }
         )
     }
@@ -70,7 +76,9 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
         [UITableViewRowAction]? {
-            let addTime = UITableViewRowAction(style: .Normal, title: "+1h") {_,_ in
+            let addTime = UITableViewRowAction(style: .Default, title: "Delete") {_,_ in
+                
+                self.showDeleteAlert(self.likes![indexPath.row])
                 
             }
             return [addTime]
@@ -100,5 +108,39 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+    
+    // MARK: - Alert
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    func showDeleteAlert(post: PFObject) {
+        
+        let alert = UIAlertController(title: "Alert", message: "Are you sure you want to delete this link ?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) -> () in
+            
+            Api.sharedInstance.deleteLike(post,
+                successCallback: { likes in
+                    
+                    print("delete Success")
+                    self.getLikes()
+                    
+                },
+                errorCallback: { error in
+                    
+                    self.showAlert("Couldn't delete this link.")
+                    
+                }
+            )
+            
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 
 }

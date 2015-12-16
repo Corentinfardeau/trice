@@ -52,15 +52,15 @@ class SignupController: UIViewController {
                         switch error.code {
 
                         case 202:
-                            self.showError("pseudo indisponible")
+                            self.showError("This username is unavailable.")
                             break
 
                         case 203:
-                            self.showError("email indisponible.")
+                            self.showError("This email address is unavailable.")
                             break
 
                         default:
-                            self.showError("Erreur de connexion au server.")
+                            self.showError("Server connection error :(")
                         }
 
                     }
@@ -69,11 +69,11 @@ class SignupController: UIViewController {
 
 
             } else {
-                showError("Email invalide.")
+                showError("Invalid email address.")
             }
 
         } else {
-            showError("Informations manquantes.")
+            showError("Missing Informations.")
         }
 
 
