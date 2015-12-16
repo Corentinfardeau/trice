@@ -220,6 +220,30 @@ class Api {
     }
     
     
+    func isPostLiked(post: PFObject, callback: (bool: Bool) -> ()) {
+        if let currentUser = Api.sharedInstance.getCurrentUser() {
+            
+            let relation = currentUser.relationForKey("likes")
+            
+            let query = relation.query()
+            
+            query.whereKey("objectId", equalTo: post.objectId!)
+            
+            query.countObjectsInBackgroundWithBlock({ (count: Int32?, error: NSError?) -> Void in
+                
+                if let count = count {
+                    callback(bool: count > 0)
+                } else {
+                    callback(bool: false)
+                }
+                
+            })
+        } else {
+            callback(bool: false)
+        }
+    }
+    
+    
     // MARK: - Post
     
     private func addHoursToDate(date: NSDate, hours: Double) -> NSDate {

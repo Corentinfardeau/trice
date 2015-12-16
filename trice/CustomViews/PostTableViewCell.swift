@@ -44,6 +44,12 @@ class PostTableViewCell: UITableViewCell {
         
         labelPostTimeLeft.text = date
         
+        Api.sharedInstance.isPostLiked(post) { bool in
+            if bool {
+                self.labelPostTimeLeft.textColor = UIColor(red:0.37, green:0.88, blue:0.59, alpha:1.0)
+            }
+        }
+        
         post["author"].fetchIfNeededInBackgroundWithBlock { (author: PFObject?, error: NSError?) -> Void in
             
             if let author = author {

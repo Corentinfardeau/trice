@@ -69,7 +69,6 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - TableView DataSource
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        print("refresh")
         getLikes()
         self.bookmarkTableView.reloadData()
         refreshControl.endRefreshing()
