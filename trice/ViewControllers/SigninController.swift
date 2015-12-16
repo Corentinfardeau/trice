@@ -14,15 +14,24 @@ class SigninController: UIViewController {
     @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let currentUser = Api.sharedInstance.getCurrentUser()
+    
+        if (currentUser != nil) {
+            performSegueWithIdentifier("signinSegue", sender: nil)
+        }
     }
     
 
@@ -36,8 +45,6 @@ class SigninController: UIViewController {
             Api.sharedInstance.loginIn(username, password: password,
                 
                 successCallback: { user in
-                    
-                    Api.sharedInstance.saveUserInLocal(user)
                 
                     self.performSegueWithIdentifier("signinSegue", sender: nil)
                 

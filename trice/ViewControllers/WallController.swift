@@ -101,8 +101,6 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
         
     }
-    
-
 
 }
 

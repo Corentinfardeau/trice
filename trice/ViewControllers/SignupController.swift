@@ -18,15 +18,6 @@ class SignupController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let currentUser = Api.sharedInstance.getUserFromLocal()
-
-        print(currentUser)
-
-        if (currentUser != nil) {
-            performSegueWithIdentifier("signupSegue", sender: nil)
-        }
-
         // Do any additional setup after loading the view.
     }
 
@@ -52,8 +43,6 @@ class SignupController: UIViewController {
 
                 Api.sharedInstance.signUp(email, password: password, username: username,
                     successCallback: { (user) -> () in
-
-                        Api.sharedInstance.saveUserInLocal(user)
 
                         self.performSegueWithIdentifier("signupSegue", sender: nil)
 
