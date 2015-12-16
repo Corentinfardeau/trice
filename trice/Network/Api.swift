@@ -57,7 +57,10 @@ class Api {
     }
     
     func getCurrentUser() -> PFUser? {
-        return PFUser.currentUser()
+        
+        let currentUser = PFUser.currentUser()
+        currentUser?.fetchInBackground()
+        return currentUser
     }
     
     func userHasHoursLeft() -> Bool {
