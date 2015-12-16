@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PKHUD
 
 class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -143,8 +144,11 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
             Api.sharedInstance.deleteLike(post,
                 successCallback: { likes in
                     
-                    print("delete Success")
                     self.getLikes()
+                    
+                    PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                    PKHUD.sharedHUD.show()
+                    PKHUD.sharedHUD.hide(afterDelay: 1.0);
                     
                 },
                 errorCallback: { error in

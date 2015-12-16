@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PKHUD
 
 class WallController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
@@ -80,12 +81,24 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 self.tableView(wallTableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
                 
+                let cell = wallTableView.cellForRowAtIndexPath(indexPath)!
+                
+                cell.userInteractionEnabled = false
                 
                 let post = self.posts![indexPath.row]
                 
                 Api.sharedInstance.upVotePost(post,
                     successCallback: { post in
-                        print("AZE")
+                        
+                        PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                        PKHUD.sharedHUD.show()
+                        PKHUD.sharedHUD.hide(afterDelay: 1.0);
+                        
+                        wallTableView.editing = false
+                        cell.userInteractionEnabled = true
+                        
+                        self.wallTableView.reloadData()
+                        self.getPosts()
                     },
                     errorCallback: { error in
                         switch error.code {

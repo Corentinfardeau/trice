@@ -57,7 +57,10 @@ class Api {
     }
     
     func getCurrentUser() -> PFUser? {
-        return PFUser.currentUser()
+        
+        let currentUser = PFUser.currentUser()
+        currentUser?.fetchInBackground()
+        return currentUser
     }
     
     func userHasHoursLeft() -> Bool {
@@ -100,6 +103,35 @@ class Api {
             }
             
         }
+    }
+    
+    func editcurrentUser(username: String?, email: String?, password: String?, successCallback: (user: PFUser) -> (), errorCallback: (error: NSError) -> ()) {
+        
+        if let currentUser = PFUser.currentUser() {
+            
+            if let username = username {
+                currentUser["username"] = username
+            }
+            
+            if let email = email {
+                currentUser["email"] = email
+            }
+            
+            if let password = password {
+                currentUser["password"] = password
+            }
+            
+            currentUser.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if success {
+                    successCallback(user: currentUser)
+                    
+                } else {
+                    errorCallback(error: error!)
+                }
+            })
+            
+        }
+        
     }
     
 
