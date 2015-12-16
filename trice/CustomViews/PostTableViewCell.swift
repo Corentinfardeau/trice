@@ -18,6 +18,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var labelPostLink: UILabel!
     @IBOutlet weak var labelPostAuthor: UILabel!
     @IBOutlet weak var labelPostTimeLeft: UILabel!
+    @IBOutlet weak var ownPostMarkerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,9 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func setPost(post: PFObject) {
+        
+        ownPostMarkerView.hidden = true
+        
         labelPostTitle.text = post["title"] as? String
         labelPostLink.text = getBaseUrl(post["link"] as! String)
         
@@ -44,6 +48,10 @@ class PostTableViewCell: UITableViewCell {
             
             if let author = author {
                 self.labelPostAuthor.text = "by \(author["username"]!)"
+                
+                if author == Api.sharedInstance.getCurrentUser() {
+                    self.ownPostMarkerView.hidden = false
+                }
             }
             
         }
