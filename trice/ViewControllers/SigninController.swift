@@ -11,7 +11,6 @@ import Parse
 
 class SigninController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
