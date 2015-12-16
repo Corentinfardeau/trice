@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PKHUD
 
 class ProfileController: UITableViewController {
 
@@ -54,18 +55,76 @@ class ProfileController: UITableViewController {
             
             Api.sharedInstance.editcurrentUser(newUsername, email: newEmail, password: nil,
                 successCallback: { user in
-                    print("userupdated!")
+                    
+                    PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                    PKHUD.sharedHUD.show()
+                    PKHUD.sharedHUD.hide(afterDelay: 1.0);
+                    
                 },
                 errorCallback: { error in
-                    self.showAlert("Server connection error :(")
+                    
+                    switch error.code {
+                        
+                    case 202:
+                        self.showAlert("This username is unavailable.")
+                        break
+                        
+                    case 203:
+                        self.showAlert("This email address is unavailable.")
+                        break
+                        
+                    case 100:
+                        self.showAlert("Server connection error :(")
+                        break
+                        
+                    default:
+                        break
+                    }
+                    
                 }
             )
-        } else {
-            print("no change")
         }
     }
     
     func updatePassword() {
+        
+        if newPasswordTextField.text == passwordConfirmationTextField.text {
+            
+            let newPassword = newPasswordTextField.text
+            
+            Api.sharedInstance.editcurrentUser(nil, email: nil, password: newPassword,
+                successCallback: { user in
+                    
+                    PKHUD.sharedHUD.contentView = PKHUDSuccessView()
+                    PKHUD.sharedHUD.show()
+                    PKHUD.sharedHUD.hide(afterDelay: 1.0);
+                    
+                },
+                errorCallback: { error in
+                    
+                    switch error.code {
+                        
+                    case 202:
+                        self.showAlert("This username is unavailable.")
+                        break
+                        
+                    case 203:
+                        self.showAlert("This email address is unavailable.")
+                        break
+                        
+                    case 100:
+                        self.showAlert("Server connection error :(")
+                        break
+                        
+                    default:
+                        break
+                    }
+                    
+                }
+            )
+        } else {
+            print("password didnt changed")
+        }
         
     }
     
