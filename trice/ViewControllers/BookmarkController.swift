@@ -78,7 +78,9 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         [UITableViewRowAction]? {
             let addTime = UITableViewRowAction(style: .Default, title: "Delete") {_,_ in
                 
-                self.showDeleteAlert(self.likes![indexPath.row])
+                if let likes = self.likes {
+                    self.showDeleteAlert(likes[indexPath.row])
+                }
                 
             }
             return [addTime]
