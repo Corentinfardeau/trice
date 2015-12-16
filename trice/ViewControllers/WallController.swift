@@ -36,6 +36,10 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        getPosts()
+    }
+    
     
     func getPosts() {
         Api.sharedInstance.getWallPosts(

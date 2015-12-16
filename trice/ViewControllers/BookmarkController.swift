@@ -39,6 +39,11 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
+    override func viewDidAppear(animated: Bool) {
+        getLikes()
+    }
+    
+    
     func getLikes() {
         Api.sharedInstance.getLikes(
             { likes in

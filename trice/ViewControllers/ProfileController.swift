@@ -88,7 +88,7 @@ class ProfileController: UITableViewController {
     
     func updatePassword() {
         
-        if newPasswordTextField.text == passwordConfirmationTextField.text {
+        if !newPasswordTextField.text!.isEmpty && !passwordConfirmationTextField.text!.isEmpty && newPasswordTextField.text == passwordConfirmationTextField.text {
             
             let newPassword = newPasswordTextField.text
             
@@ -122,8 +122,6 @@ class ProfileController: UITableViewController {
                     
                 }
             )
-        } else {
-            print("password didnt changed")
         }
         
     }
