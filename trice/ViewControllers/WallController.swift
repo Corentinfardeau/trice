@@ -79,9 +79,13 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
 
-    func tableView(wallTableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
-        [UITableViewRowAction]? {
-            let addTime = UITableViewRowAction(style: .Default, title: "+1h") {_,_ in
+    func tableView(wallTableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+            
+        if let currentUser = Api.sharedInstance.getCurrentUser() {
+            
+            let hasHoursLeft = currentUser["hoursLeft"] as! Int != 0
+            
+            let addTime = UITableViewRowAction(style: .Default, title: hasHoursLeft ? "+1h" : "No hours left to give") {_,_ in
                 
                 self.tableView(wallTableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
                 
@@ -96,12 +100,11 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
                         
                         PKHUD.sharedHUD.contentView = PKHUDSuccessView()
                         PKHUD.sharedHUD.show()
-                        PKHUD.sharedHUD.hide(afterDelay: 1.0);
+                        PKHUD.sharedHUD.hide(afterDelay: 0.8);
                         
                         wallTableView.editing = false
                         cell.userInteractionEnabled = true
                         
-                        self.wallTableView.reloadData()
                         self.getPosts()
                     },
                     errorCallback: { error in
@@ -121,7 +124,11 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
             addTime.backgroundColor = UIColor(red:0.36, green:0.88, blue:0.59, alpha:1.0)
             
             return [addTime]
+        }
+        
+        return nil
     }
+    
     
     func tableView(wallTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

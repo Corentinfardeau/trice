@@ -148,11 +148,12 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
             Api.sharedInstance.deleteLike(post,
                 successCallback: { likes in
                     
-                    self.getLikes()
+                    self.likes = likes
+                    self.bookmarkTableView.reloadData()
                     
                     PKHUD.sharedHUD.contentView = PKHUDSuccessView()
                     PKHUD.sharedHUD.show()
-                    PKHUD.sharedHUD.hide(afterDelay: 1.0);
+                    PKHUD.sharedHUD.hide(afterDelay: 0.8);
                     
                 },
                 errorCallback: { error in
