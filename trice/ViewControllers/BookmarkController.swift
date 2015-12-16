@@ -111,6 +111,20 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let likes = likes {
+            
+            let like = likes[indexPath.row]
+            
+            let url = NSURL(string: like["link"] as! String)!
+            UIApplication.sharedApplication().openURL(url)
+            
+        }
+        
+        bookmarkTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     // MARK: - Alert
     
     func showAlert(message: String) {
@@ -143,6 +157,7 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
+
 
 
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SwiftDate
 
 class PostTableViewCell: UITableViewCell {
     
@@ -15,6 +16,8 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelPostTitle: UILabel!
     @IBOutlet weak var labelPostLink: UILabel!
+    @IBOutlet weak var labelPostAuthor: UILabel!
+    @IBOutlet weak var labelPostTimeLeft: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +32,30 @@ class PostTableViewCell: UITableViewCell {
     
     func setPost(post: PFObject) {
         labelPostTitle.text = post["title"] as? String
-        labelPostLink.text = post["link"] as? String
+        labelPostLink.text = getBaseUrl(post["link"] as! String)
+        
+        let expiresAt = post["expiresAt"] as! NSDate
+        
+        let date = expiresAt.toRelativeString(fromDate: NSDate(), abbreviated: true, maxUnits: 1)!
+        
+        labelPostTimeLeft.text = date
+        
+        post["author"].fetchIfNeededInBackgroundWithBlock { (author: PFObject?, error: NSError?) -> Void in
+            
+            if let author = author {
+                self.labelPostAuthor.text = "by \(author["username"]!)"
+            }
+            
+        }
+        
+    }
+    
+    
+    // MARK: - Helpers
+    
+    func getBaseUrl(url: String) -> String {
+        let baseUrl = NSURL(string: url)
+        return "\(baseUrl!.host!)"
     }
 
 }

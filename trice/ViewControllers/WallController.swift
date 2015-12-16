@@ -129,6 +129,20 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
         
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let posts = posts {
+            
+            let post = posts[indexPath.row]
+            
+            let url = NSURL(string: post["link"] as! String)!
+            UIApplication.sharedApplication().openURL(url)
+            
+        }
+        
+        wallTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 
 }
 
