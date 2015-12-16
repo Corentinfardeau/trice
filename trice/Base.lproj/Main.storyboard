@@ -412,32 +412,6 @@
             </objects>
             <point key="canvasLocation" x="-227" y="515"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="aPv-Kd-lV5">
-            <objects>
-                <viewController id="2Kr-KN-4vW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SRD-Bb-Jax"/>
-                        <viewControllerLayoutGuide type="bottom" id="aLd-GU-iRQ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="igK-6W-ZHa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Profile" id="MC5-JD-NCG">
-                        <barButtonItem key="rightBarButtonItem" image="add-post" id="aQo-na-8GO">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="S15-vW-WHr" kind="presentation" id="vyH-7L-50g"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VAb-l9-3Lg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1765" y="1220"/>
-        </scene>
         <!--Bookmarks-->
         <scene sceneID="aJ7-KA-Ysu">
             <objects>
@@ -599,7 +573,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Password" id="6aN-Qh-G6b">
+                            <tableViewSection headerTitle="Change your Password" id="6aN-Qh-G6b">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JX8-CQ-kXt">
                                         <rect key="frame" x="0.0" y="251.5" width="600" height="44"/>
@@ -608,10 +582,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpD-hy-atL">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpD-hy-atL">
                                                     <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -632,7 +606,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password confirmation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BNo-kE-mjZ">
                                                     <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -684,16 +658,21 @@
                     <navigationItem key="navigationItem" title="Profile" id="zRD-Ke-0au">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="bCb-Dn-6bB">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="saveClickAction:" destination="G66-6b-hPE" id="TQW-Yh-olF"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mailTextField" destination="kCK-mS-yjM" id="F9i-Pe-2oB"/>
+                        <outlet property="newPasswordTextField" destination="NpD-hy-atL" id="tjl-0x-Ndt"/>
+                        <outlet property="passwordConfirmationTextField" destination="BNo-kE-mjZ" id="sXl-BL-2Nm"/>
                         <outlet property="pseudoTextField" destination="Csh-NS-caY" id="Jfb-Tv-zQI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njB-O8-0cc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="1248"/>
+            <point key="canvasLocation" x="1774" y="1228"/>
         </scene>
         <!--New post-->
         <scene sceneID="0Qy-jq-qYC">
@@ -850,7 +829,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hZ4-2e-LUX"/>
-        <segue reference="qsY-Je-in1"/>
         <segue reference="EeX-Q8-aSt"/>
+        <segue reference="qsY-Je-in1"/>
     </inferredMetricsTieBreakers>
 </document>
