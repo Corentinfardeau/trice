@@ -22,9 +22,7 @@ class CreateController: UIViewController, UITextViewDelegate {
         postTextView.delegate = self
         setUI()
         
-        
     }
-    
     
     func setUI(){
         
@@ -48,6 +46,11 @@ class CreateController: UIViewController, UITextViewDelegate {
         linkTextField.attributedPlaceholder = NSAttributedString(string:"Paste your link",
             attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
         
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        linkTextField.resignFirstResponder()
+        postTextView.resignFirstResponder()
     }
     
     func textViewDidBeginEditing(postTextView: UITextView) {
