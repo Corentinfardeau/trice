@@ -31,6 +31,12 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         wallTableView.tableFooterView = UIView()
         wallTableView.addSubview(refreshControl)
         
+        getPosts()
+
+    }
+    
+    
+    func getPosts() {
         Api.sharedInstance.getWallPosts(
             { posts in
                 
@@ -42,11 +48,11 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
             }
         )
-
     }
+    
 
     func handleRefresh(refreshControl: UIRefreshControl) {
-        print("refresh")
+        getPosts()
         self.wallTableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -55,6 +61,10 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // MARK: - Table View
+    
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 86
@@ -67,8 +77,26 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(wallTableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
         [UITableViewRowAction]? {
             let addTime = UITableViewRowAction(style: .Default, title: "+1h") {_,_ in
-                print("button tapped")
+                
                 self.tableView(wallTableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
+                
+                
+                let post = self.posts![indexPath.row]
+                
+                Api.sharedInstance.upVotePost(post,
+                    successCallback: { post in
+                        print("AZE")
+                    },
+                    errorCallback: { error in
+                        switch error.code {
+                        case 311:
+                            print("l'utilisateur n'a plus d'heure de dispo")
+                            break
+                        default:
+                            break
+                        }
+                    }
+                )
             }
             
             addTime.backgroundColor = UIColor(red:0.36, green:0.88, blue:0.59, alpha:1.0)

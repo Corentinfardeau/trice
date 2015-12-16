@@ -14,10 +14,12 @@ class SigninController: UIViewController {
     @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
-    
+    @IBOutlet weak var formView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formView.layer.cornerRadius = 3.0
+        signinButton.layer.cornerRadius = 3.0
         // Do any additional setup after loading the view.
     }
 
@@ -25,13 +27,17 @@ class SigninController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+ 
     override func viewDidAppear(animated: Bool) {
         let currentUser = Api.sharedInstance.getCurrentUser()
     
         if (currentUser != nil) {
             performSegueWithIdentifier("signinSegue", sender: nil)
         }
+    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
 
