@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		194B25171C209DAA00ED6B75 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B25161C209DAA00ED6B75 /* CustomNavbar.swift */; };
+		194B251D1C20C24100ED6B75 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B251C1C20C24100ED6B75 /* CreateController.swift */; };
 		195537C51C1EEF0700713AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537C41C1EEF0700713AF5 /* AppDelegate.swift */; };
 		195537CA1C1EEF0700713AF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195537C81C1EEF0700713AF5 /* Main.storyboard */; };
 		195537CC1C1EEF0700713AF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195537CB1C1EEF0700713AF5 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		194B25161C209DAA00ED6B75 /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
+		194B251C1C20C24100ED6B75 /* CreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 		195537C11C1EEF0700713AF5 /* trice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		195537C41C1EEF0700713AF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		195537C91C1EEF0700713AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 		389AF0B81C2017D700319778 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				194B25161C209DAA00ED6B75 /* CustomNavbar.swift */,
 				199BF3CA1C202382004A4585 /* PostTableViewCell.swift */,
 			);
 			path = CustomViews;
@@ -269,6 +274,7 @@
 				389AF0BA1C2017D700319778 /* WallController.swift */,
 				1969F6761C205B4F00382AB5 /* SignupController.swift */,
 				1969F6781C205BAB00382AB5 /* SigninController.swift */,
+				194B251C1C20C24100ED6B75 /* CreateController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -490,6 +496,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				195537C51C1EEF0700713AF5 /* AppDelegate.swift in Sources */,
+				194B251D1C20C24100ED6B75 /* CreateController.swift in Sources */,
+				194B25171C209DAA00ED6B75 /* CustomNavbar.swift in Sources */,
 				1969F6791C205BAB00382AB5 /* SigninController.swift in Sources */,
 				389AF0BB1C2017D700319778 /* WallController.swift in Sources */,
 				38F563291C1F329100FA6D5A /* Api.swift in Sources */,

@@ -56,15 +56,23 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 86
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
+    func tableView(wallTableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+
+    func tableView(wallTableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
         [UITableViewRowAction]? {
-            let addTime = UITableViewRowAction(style: .Normal, title: "+1h") {_,_ in
-                
+            let addTime = UITableViewRowAction(style: .Default, title: "+1h") {_,_ in
+                print("button tapped")
+                self.tableView(wallTableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
             }
+            
+            addTime.backgroundColor = UIColor(red:0.36, green:0.88, blue:0.59, alpha:1.0)
+            
             return [addTime]
     }
     
