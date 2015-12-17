@@ -18,14 +18,22 @@ class ProfileController: UITableViewController {
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
+    @IBOutlet weak var hoursLeftLabel: UILabel!
     
-    
+    @IBOutlet weak var logoCell: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logoCell.backgroundColor = UIColor.clearColor()
         
         user = Api.sharedInstance.getCurrentUser()
         pseudoTextField.text = user?.username
         mailTextField.text = user?.email
+        
+        if let result_number = user["hoursLeft"] as? NSNumber
+        {
+            hoursLeftLabel.text = "\(result_number)"
+        }
         
     }
 

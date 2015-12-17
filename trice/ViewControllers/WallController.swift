@@ -15,7 +15,7 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var wallTableView: UITableView!
     let gradientLayer = CAGradientLayer()
-    
+
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -28,14 +28,16 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         wallTableView.tableFooterView = UIView()
         wallTableView.addSubview(refreshControl)
+        let logo = UIImage(named: "trice.png")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
         
         getPosts()
 
     }
-    
     
     func getPosts() {
         Api.sharedInstance.getWallPosts(
@@ -50,7 +52,6 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         )
     }
-    
 
     func handleRefresh(refreshControl: UIRefreshControl) {
         getPosts()
@@ -68,7 +69,7 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 86
+        return 100
     }
     
     func tableView(wallTableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -155,6 +156,10 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         wallTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, UILongPressGestureRecognizer indexPath: NSIndexPath) {
+        print("jhih")
     }
 
 }
