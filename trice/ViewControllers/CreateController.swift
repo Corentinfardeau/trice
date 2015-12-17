@@ -13,38 +13,16 @@ class CreateController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var titleLengthLabel: UILabel!
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
-    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     private var maxTitleLength = 35
+    private var kbHeight: CGFloat!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         postTextView.delegate = self
         setUI()
-        
-    }
-    
-    func setUI(){
-        
-        //Border-bottom
-        linkTextField.borderStyle = UITextBorderStyle.None
-        
-        let bottomBorder = CALayer()
-        bottomBorder.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
-        bottomBorder.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
-        linkTextField.layer.addSublayer(bottomBorder)
-        
-        //Padding
-        let paddingTextField = UIView(frame: CGRectMake(0, 0, 15, linkTextField.frame.height))
-        linkTextField.leftView = paddingTextField
-        linkTextField.leftViewMode = UITextFieldViewMode.Always
-        
-        postTextView.textContainerInset =
-        UIEdgeInsetsMake(20,10,0,15);
-        
-        postTextView.textColor = UIColor.lightGrayColor()
-        linkTextField.attributedPlaceholder = NSAttributedString(string:"Paste your link",
-            attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+        NSNotificationCenter.defaultCenter().addObserver(self, selector : Selector("keyboardWasShown:"), name:UIKeyboardWillShowNotification, object : nil)
         
     }
     
@@ -61,14 +39,62 @@ class CreateController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        titleLengthLabel.text = "\( maxTitleLength - textView.text.characters.count)"
+        let nbCharactere = maxTitleLength - textView.text.characters.count
+        
+        if(nbCharactere < 0){
+            titleLengthLabel.textColor = UIColor(red:0.76, green:0.18, blue:0.18, alpha:1.0)
+        }else{
+            titleLengthLabel.textColor = UIColor(red:0.77, green:0.77, blue:0.77, alpha:1.0)
+        }
+        
+        titleLengthLabel.text = "\(nbCharactere)"
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func keyboardWasShown(notification: NSNotification) {
+        var info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        self.bottomConstraint.constant = keyboardFrame.size.height + 20
+
+        
+        UIView.animateWithDuration(0.5) {
+            self.view.layoutIfNeeded()
+        }
+
+    }
+    
+
+    
+    // Mark: - SetUI
+    
+    func setUI(){
+        
+        //Border-bottom
+        linkTextField.borderStyle = UITextBorderStyle.None
+        
+        let bottomBorder = CALayer()
+        bottomBorder.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
+        bottomBorder.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
+        linkTextField.layer.addSublayer(bottomBorder)
+        
+        //Padding
+        let paddingTextField = UIView(frame: CGRectMake(0, 0, 40, linkTextField.frame.height))
+        linkTextField.leftView = paddingTextField
+        linkTextField.leftViewMode = UITextFieldViewMode.Always
+        
+        postTextView.textContainerInset =
+            UIEdgeInsetsMake(20,10,0,15);
+        
+        postTextView.textColor = UIColor.lightGrayColor()
+        linkTextField.attributedPlaceholder = NSAttributedString(string:"Paste your link",
+            attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+        
+    }
     
     // MARK: - Validation
     
