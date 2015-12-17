@@ -122,8 +122,8 @@ class CreateController: UIViewController, UITextViewDelegate, CategoryDelegate {
     }
     
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -156,20 +156,20 @@ class CreateController: UIViewController, UITextViewDelegate, CategoryDelegate {
                             
                         },
                         errorCallback: { error in
-                            self.showAlert("There where an error")
+                            self.showAlert("Oups", message: "There where an error")
                         }
                     )
                     
                 } else {
-                    showAlert("Your title is too long")
+                    showAlert("Nop", message: "Your title is too long")
                 }
                 
             } else {
-                showAlert("not a valid Url")
+                showAlert("Nop", message: "not a valid Url")
             }
             
         } else {
-            showAlert("Information are missing")
+            showAlert("Nop", message: "Information are missing")
         }
         
     }

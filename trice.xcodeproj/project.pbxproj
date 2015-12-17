@@ -22,8 +22,6 @@
 		1969F6791C205BAB00382AB5 /* SigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1969F6781C205BAB00382AB5 /* SigninController.swift */; };
 		199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BF3CA1C202382004A4585 /* PostTableViewCell.swift */; };
 		19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D570A61C21A22700869BE3 /* ProfileController.swift */; };
-		19E3204F1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E3204E1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift */; };
-		19E320511C233E0300B7B9B8 /* OnBoardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E320501C233E0300B7B9B8 /* OnBoardingController.swift */; };
 		19EEA5301C2309750080D242 /* CategoryModalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */; };
 		38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38338CB31C20A26D00418442 /* BookmarkController.swift */; };
 		38338CB61C20A61000418442 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */; };
@@ -43,6 +41,8 @@
 		388831141C1EFDBF0023DB50 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831131C1EFDBF0023DB50 /* libsqlite3.tbd */; };
 		388831161C1EFF4C0023DB50 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388831151C1EFF4C0023DB50 /* Parse.framework */; };
 		389AF0BB1C2017D700319778 /* WallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389AF0BA1C2017D700319778 /* WallController.swift */; };
+		38E5C9CC1C2366A80074642E /* OnBoardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E5C9CB1C2366A80074642E /* OnBoardingController.swift */; };
+		38E5C9CE1C2366E80074642E /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E5C9CD1C2366E80074642E /* OnBoardingCollectionViewCell.swift */; };
 		38F563291C1F329100FA6D5A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F563261C1F329100FA6D5A /* Api.swift */; };
 		89B18218CA4C3CA3BC033059 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8820E29E1715F1FEE68C58BC /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -86,8 +86,6 @@
 		1969F6781C205BAB00382AB5 /* SigninController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninController.swift; sourceTree = "<group>"; };
 		199BF3CA1C202382004A4585 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		19D570A61C21A22700869BE3 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		19E3204E1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingCollectionViewCell.swift; path = ../../../../../Downloads/Waltrough_Ravi/Waltrough_Ravi/OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		19E320501C233E0300B7B9B8 /* OnBoardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingController.swift; path = ../../../../../Downloads/Waltrough_Ravi/Waltrough_Ravi/OnBoardingController.swift; sourceTree = "<group>"; };
 		19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModalViewCell.swift; sourceTree = "<group>"; };
 		365083E4AFE81887EA83236A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		38338CB31C20A26D00418442 /* BookmarkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
@@ -127,6 +125,8 @@
 		388831131C1EFDBF0023DB50 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		388831151C1EFF4C0023DB50 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		389AF0BA1C2017D700319778 /* WallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallController.swift; sourceTree = "<group>"; };
+		38E5C9CB1C2366A80074642E /* OnBoardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingController.swift; sourceTree = "<group>"; };
+		38E5C9CD1C2366E80074642E /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		38F563261C1F329100FA6D5A /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		8820E29E1715F1FEE68C58BC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F298636D8057730B8C57B8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		389AF0B81C2017D700319778 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				19E3204E1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift */,
+				38E5C9CD1C2366E80074642E /* OnBoardingCollectionViewCell.swift */,
 				194B25161C209DAA00ED6B75 /* CustomNavbar.swift */,
 				199BF3CA1C202382004A4585 /* PostTableViewCell.swift */,
 				38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */,
@@ -298,7 +298,7 @@
 		389AF0B91C2017D700319778 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				19E320501C233E0300B7B9B8 /* OnBoardingController.swift */,
+				38E5C9CB1C2366A80074642E /* OnBoardingController.swift */,
 				389AF0BA1C2017D700319778 /* WallController.swift */,
 				1969F6761C205B4F00382AB5 /* SignupController.swift */,
 				1969F6781C205BAB00382AB5 /* SigninController.swift */,
@@ -535,11 +535,11 @@
 				1969F6791C205BAB00382AB5 /* SigninController.swift in Sources */,
 				389AF0BB1C2017D700319778 /* WallController.swift in Sources */,
 				191E12661C22E8110069F86A /* CategoryController.swift in Sources */,
+				38E5C9CE1C2366E80074642E /* OnBoardingCollectionViewCell.swift in Sources */,
 				38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */,
 				38F563291C1F329100FA6D5A /* Api.swift in Sources */,
 				19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */,
-				19E320511C233E0300B7B9B8 /* OnBoardingController.swift in Sources */,
-				19E3204F1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift in Sources */,
+				38E5C9CC1C2366A80074642E /* OnBoardingController.swift in Sources */,
 				19EEA5301C2309750080D242 /* CategoryModalViewCell.swift in Sources */,
 				1969F6771C205B4F00382AB5 /* SignupController.swift in Sources */,
 				199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */,

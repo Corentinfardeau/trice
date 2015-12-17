@@ -27,11 +27,17 @@ class ProfileController: UITableViewController {
         pseudoTextField.text = user?.username
         mailTextField.text = user?.email
         
-        if let result_number = user["hoursLeft"] as? NSNumber
-        {
+        if let result_number = user["hoursLeft"] as? NSNumber {
             hoursLeftLabel.text = "\(result_number)"
         }
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        user = Api.sharedInstance.getCurrentUser()
+        if let result_number = user["hoursLeft"] as? NSNumber {
+            hoursLeftLabel.text = "\(result_number)"
+        }
     }
 
     override func didReceiveMemoryWarning() {
