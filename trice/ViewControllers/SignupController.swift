@@ -61,15 +61,15 @@ class SignupController: UIViewController, UITextFieldDelegate{
                         switch error.code {
 
                         case 202:
-                            self.showAlert("This username is unavailable.")
+                            self.showAlert("Oups", message: "This username is unavailable.")
                             break
 
                         case 203:
-                            self.showAlert("This email address is unavailable.")
+                            self.showAlert("Oups", message: "This email address is unavailable.")
                             break
 
                         default:
-                            self.showAlert("Server connection error :(")
+                            self.showAlert("Oups", message: "Server connection error :(")
                         }
 
                     }
@@ -78,11 +78,11 @@ class SignupController: UIViewController, UITextFieldDelegate{
 
 
             } else {
-                showAlert("Invalid email address.")
+                showAlert("Oups", message: "Invalid email address.")
             }
 
         } else {
-            showAlert("Missing Informations.")
+            showAlert("Oups", message: "Missing Informations.")
         }
         
     }
@@ -122,8 +122,8 @@ class SignupController: UIViewController, UITextFieldDelegate{
     
     // MARK: - Alert
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

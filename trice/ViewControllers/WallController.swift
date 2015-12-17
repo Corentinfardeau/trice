@@ -127,7 +127,7 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
                 )
             }
 
-            addTime.backgroundColor = UIColor(red:0.36, green:0.88, blue:0.59, alpha:1.0)
+            addTime.backgroundColor = hasHoursLeft ? UIColor(red:0.36, green:0.88, blue:0.59, alpha:1.0) : UIColor(red:0.75, green:0.75, blue:0.75, alpha:1.0)
 
             return [addTime]
         }

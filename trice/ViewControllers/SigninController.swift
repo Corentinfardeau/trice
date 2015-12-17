@@ -84,14 +84,14 @@ class SigninController: UIViewController, UITextFieldDelegate {
                 },
                 errorCallback: { error in
                     
-                    self.showAlert("Logins invalides")
+                    self.showAlert("Oups", message: "invalid credentials")
                     
                 }
             )
             
             
         } else {
-            showAlert("Informations manquantes.")
+            showAlert("Oups", message: "Missing informations.")
         }
         
     }
@@ -120,8 +120,8 @@ class SigninController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Alert
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

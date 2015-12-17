@@ -55,7 +55,7 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
             errorCallback: { error in
                 switch error.code {
                 case 100:
-                    self.showAlert("No Internet connection ;(")
+                    self.showAlert("Oups", message: "No Internet connection ;(")
                     break
                 default:
                     break
@@ -132,8 +132,8 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - Alert
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -142,8 +142,11 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func showDeleteAlert(post: PFObject) {
         
-        let alert = UIAlertController(title: "Alert", message: "Are you sure you want to delete this link ?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) -> () in
+        let alert = UIAlertController(title: "Wait a second ...", message: "Are you sure you want to delete this link ?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: { (action: UIAlertAction) -> () in
             
             Api.sharedInstance.deleteLike(post,
                 successCallback: { likes in
@@ -158,12 +161,13 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
                 },
                 errorCallback: { error in
                     
-                    self.showAlert("Couldn't delete this link.")
+                    self.showAlert("Oups", message: "Couldn't delete this link.")
                     
                 }
             )
             
         }))
+        
         self.presentViewController(alert, animated: true, completion: nil)
     }
 

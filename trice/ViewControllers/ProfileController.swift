@@ -74,15 +74,15 @@ class ProfileController: UITableViewController {
                     switch error.code {
                         
                     case 202:
-                        self.showAlert("This username is unavailable.")
+                        self.showAlert("Oups", message: "This username is unavailable.")
                         break
                         
                     case 203:
-                        self.showAlert("This email address is unavailable.")
+                        self.showAlert("Oups", message: "This email address is unavailable.")
                         break
                         
                     case 100:
-                        self.showAlert("Server connection error :(")
+                        self.showAlert("Oups", message: "Server connection error :(")
                         break
                         
                     default:
@@ -113,15 +113,15 @@ class ProfileController: UITableViewController {
                     switch error.code {
                         
                     case 202:
-                        self.showAlert("This username is unavailable.")
+                        self.showAlert("Oups", message: "This username is unavailable.")
                         break
                         
                     case 203:
-                        self.showAlert("This email address is unavailable.")
+                        self.showAlert("Oups", message: "This email address is unavailable.")
                         break
                         
                     case 100:
-                        self.showAlert("Server connection error :(")
+                        self.showAlert("Oups", message: "Server connection error :(")
                         break
                         
                     default:
@@ -136,8 +136,8 @@ class ProfileController: UITableViewController {
     
     // MARK: - alert
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
