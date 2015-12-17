@@ -219,31 +219,6 @@ class Api {
         }
     }
     
-    
-    func isPostLiked(post: PFObject, callback: (bool: Bool) -> ()) {
-        if let currentUser = Api.sharedInstance.getCurrentUser() {
-            
-            let relation = currentUser.relationForKey("likes")
-            
-            let query = relation.query()
-            
-            query.whereKey("objectId", equalTo: post.objectId!)
-            
-            query.countObjectsInBackgroundWithBlock({ (count: Int32?, error: NSError?) -> Void in
-                
-                if let count = count {
-                    callback(bool: count > 0)
-                } else {
-                    callback(bool: false)
-                }
-                
-            })
-        } else {
-            callback(bool: false)
-        }
-    }
-    
-    
     // MARK: - Post
     
     private func addHoursToDate(date: NSDate, hours: Double) -> NSDate {
@@ -278,6 +253,16 @@ class Api {
     }
     
     
+    func addPostToVisited (post: PFObject) {
+        if let currentUser = PFUser.currentUser() {
+            
+            let relation = currentUser.relationForKey("visitedPosts")
+            relation.addObject(post)
+            
+            currentUser.saveInBackground()
+        }
+    }
+    
     func editPost(post: PFObject, title: String?, link: String?, expiresAt: NSDate?, successCallback: (post: PFObject) -> (), errorCallback: (error: NSError) -> ()) {
         if let title = title {
             post["title"] = title
@@ -297,6 +282,29 @@ class Api {
             } else {
                 errorCallback(error: error!)
             }
+        }
+    }
+    
+    func getVisitedPosts(successCallback: (likes: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+        
+        if let currentUser = PFUser.currentUser() {
+            
+            let relation = currentUser.relationForKey("visitedPosts")
+            
+            let query = relation.query()
+            
+            query.orderByDescending("expiresAt")
+            
+            query.findObjectsInBackgroundWithBlock({ (likes: [PFObject]?, error: NSError?) -> Void in
+                if let likes = likes {
+                    successCallback(likes: likes)
+                } else {
+                    errorCallback(error: error!)
+                }
+            })
+            
+        } else {
+            print("Api#getVisitedPosts() Error : No user currently loggedIn")
         }
     }
     
@@ -325,6 +333,52 @@ class Api {
                 errorCallback(error: error!)
             }
         }
+    }
+    
+    func getPostsLikesAndVisited(successCallback: (posts: [PFObject], likes: [PFObject], visited: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+        
+        
+        var posts: [PFObject]!
+        var likes: [PFObject]!
+        var visited: [PFObject]!
+        
+        let dispatchGroup: dispatch_group_t = dispatch_group_create()
+        
+        
+        dispatch_group_enter(dispatchGroup)
+        getWallPosts(
+            { res in
+                
+                posts = res
+                dispatch_group_leave(dispatchGroup)
+            },
+            errorCallback: { error in }
+        )
+        
+        dispatch_group_enter(dispatchGroup)
+        getLikes(
+            { res in
+                
+                likes = res
+                dispatch_group_leave(dispatchGroup)
+            },
+            errorCallback: { error in }
+        )
+        
+        dispatch_group_enter(dispatchGroup)
+        getVisitedPosts(
+            { res in
+                
+                visited = res
+                dispatch_group_leave(dispatchGroup)
+            },
+            errorCallback: { error in }
+        )
+        
+        dispatch_group_notify(dispatchGroup, dispatch_get_main_queue(), {
+            successCallback(posts: posts, likes: likes, visited: visited)
+        });
+        
     }
     
     

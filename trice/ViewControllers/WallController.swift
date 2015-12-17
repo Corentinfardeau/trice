@@ -24,6 +24,8 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     }()
     
     var posts: [PFObject]?
+    var likes: [PFObject]?
+    var visited: [PFObject]?
     
     override func viewDidLoad() {
         
@@ -42,11 +44,14 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     func getPosts() {
-        Api.sharedInstance.getWallPosts(
-            { posts in
+        Api.sharedInstance.getPostsLikesAndVisited(
+            { posts, likes, visited in
                 
                 self.posts = posts
+                self.likes = likes
+                self.visited = visited
                 self.wallTableView.reloadData()
+                self.refreshControl.endRefreshing()
                 
             },
             errorCallback: { error in
@@ -85,7 +90,7 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let hasHoursLeft = currentUser["hoursLeft"] as! Int != 0
             
-            let addTime = UITableViewRowAction(style: .Default, title: hasHoursLeft ? "+1h" : "No hours left to give") {_,_ in
+            let addTime = UITableViewRowAction(style: .Default, title: hasHoursLeft ? "+1h" : "Enough for today ;)") {_,_ in
                 
                 self.tableView(wallTableView, commitEditingStyle: UITableViewCellEditingStyle.None, forRowAtIndexPath: indexPath)
                 
@@ -144,8 +149,12 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let cell =  wallTableView.dequeueReusableCellWithIdentifier(PostTableViewCell.identifier, forIndexPath: indexPath) as! PostTableViewCell ;
 
-        if let posts = self.posts {
-            cell.setPost(posts[indexPath.row])
+        let posts = self.posts
+        let likes = self.likes
+        let visited = self.visited
+        
+        if posts != nil && likes != nil && visited != nil {
+            cell.setPost(posts![indexPath.row], likes: likes!, visited: visited!)
         }
         
         cell.preservesSuperviewLayoutMargins = false
@@ -162,8 +171,11 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             let post = posts[indexPath.row]
             
+            
+            
             let url = NSURL(string: post["link"] as! String)!
             UIApplication.sharedApplication().openURL(url)
+            Api.sharedInstance.addPostToVisited(post)
             
         }
         
