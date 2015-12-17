@@ -705,7 +705,6 @@
                         <outlet property="backgroundInfos" destination="WNd-v4-dNB" id="nC9-wH-Nee"/>
                         <outlet property="backgroungTitle" destination="t1a-B0-RWp" id="shp-KC-NDe"/>
                         <outlet property="bookmarkTableView" destination="M2s-hX-3Qg" id="Qgp-1D-Zgh"/>
-                        <outlet property="seePostButton" destination="c7W-hz-cVH" id="sM2-1R-L60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nE-sh-GKo" userLabel="First Responder" sceneMemberID="firstResponder"/>

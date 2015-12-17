@@ -100,7 +100,7 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func seePostAction(sender: AnyObject) {
         
-        prepareForSegue(<#T##segue: UIStoryboardSegue##UIStoryboardSegue#>, sender: nil)
+//        prepareForSegue(<#T##segue: UIStoryboardSegue##UIStoryboardSegue#>, sender: nil)
         
     }
     
