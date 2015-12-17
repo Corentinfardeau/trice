@@ -37,10 +37,20 @@ class BookmarkTableViewCell: UITableViewCell {
         
         like["author"].fetchIfNeededInBackgroundWithBlock { (author: PFObject?, error: NSError?) -> Void in
             
-            if let author = author {
-                self.likeAuthorLabel.text = "by \(author["username"]!)"
-            }
+            like["category"].fetchIfNeededInBackgroundWithBlock { (category: PFObject?, error: NSError?) -> Void in
             
+                var text = ""
+                
+                if let author = author {
+                     text += "by \(author["username"]!)"
+                }
+                
+                if let category = category {
+                    text += " in \(category["name"])"
+                }
+                
+                self.likeAuthorLabel.text = text
+            }
         }
 
     }

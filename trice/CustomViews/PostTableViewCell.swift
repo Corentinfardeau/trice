@@ -44,16 +44,27 @@ class PostTableViewCell: UITableViewCell {
         
         labelPostTimeLeft.text = date
         
+        
         post["author"].fetchIfNeededInBackgroundWithBlock { (author: PFObject?, error: NSError?) -> Void in
             
-            if let author = author {
-                self.labelPostAuthor.text = "by \(author["username"]!)"
+            post["category"].fetchIfNeededInBackgroundWithBlock { (category: PFObject?, error: NSError?) -> Void in
+                
+                var text = ""
+                
+                if let author = author {
+                    text += "by \(author["username"]!)"
+                }
+                
+                if let category = category {
+                    text += " in \(category["name"])"
+                }
+                
+                self.labelPostAuthor.text = text
                 
                 if author == Api.sharedInstance.getCurrentUser() {
                     self.ownPostMarkerView.hidden = false
                 }
             }
-            
         }
         
         if likes.contains(post) {
