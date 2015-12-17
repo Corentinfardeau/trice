@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		191E12661C22E8110069F86A /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E12651C22E8110069F86A /* CategoryController.swift */; };
 		191E12681C22EBC30069F86A /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E12671C22EBC30069F86A /* CategoryTableViewCell.swift */; };
+		191E126A1C2304A20069F86A /* CategoryModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E12691C2304A20069F86A /* CategoryModalController.swift */; };
 		194B25171C209DAA00ED6B75 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B25161C209DAA00ED6B75 /* CustomNavbar.swift */; };
 		194B251D1C20C24100ED6B75 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B251C1C20C24100ED6B75 /* CreateController.swift */; };
 		195537C51C1EEF0700713AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537C41C1EEF0700713AF5 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 		1969F6791C205BAB00382AB5 /* SigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1969F6781C205BAB00382AB5 /* SigninController.swift */; };
 		199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BF3CA1C202382004A4585 /* PostTableViewCell.swift */; };
 		19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D570A61C21A22700869BE3 /* ProfileController.swift */; };
+		19EEA5301C2309750080D242 /* CategoryModalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */; };
 		38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38338CB31C20A26D00418442 /* BookmarkController.swift */; };
 		38338CB61C20A61000418442 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */; };
 		3865C75F1C22F27700411F84 /* CategoryDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3865C75E1C22F27700411F84 /* CategoryDetailsController.swift */; };
@@ -63,6 +65,7 @@
 /* Begin PBXFileReference section */
 		191E12651C22E8110069F86A /* CategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		191E12671C22EBC30069F86A /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		191E12691C2304A20069F86A /* CategoryModalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModalController.swift; sourceTree = "<group>"; };
 		194B25161C209DAA00ED6B75 /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		194B251C1C20C24100ED6B75 /* CreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 		195537C11C1EEF0700713AF5 /* trice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +84,7 @@
 		1969F6781C205BAB00382AB5 /* SigninController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninController.swift; sourceTree = "<group>"; };
 		199BF3CA1C202382004A4585 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		19D570A61C21A22700869BE3 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModalViewCell.swift; sourceTree = "<group>"; };
 		365083E4AFE81887EA83236A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		38338CB31C20A26D00418442 /* BookmarkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 				38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */,
 				191E12671C22EBC30069F86A /* CategoryTableViewCell.swift */,
 				3865C7601C22FF2B00411F84 /* CategoryPostTableViewCell.swift */,
+				19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				19D570A61C21A22700869BE3 /* ProfileController.swift */,
 				191E12651C22E8110069F86A /* CategoryController.swift */,
 				3865C75E1C22F27700411F84 /* CategoryDetailsController.swift */,
+				191E12691C2304A20069F86A /* CategoryModalController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -526,12 +532,14 @@
 				38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */,
 				38F563291C1F329100FA6D5A /* Api.swift in Sources */,
 				19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */,
+				19EEA5301C2309750080D242 /* CategoryModalViewCell.swift in Sources */,
 				1969F6771C205B4F00382AB5 /* SignupController.swift in Sources */,
 				199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */,
 				191E12681C22EBC30069F86A /* CategoryTableViewCell.swift in Sources */,
 				3865C75F1C22F27700411F84 /* CategoryDetailsController.swift in Sources */,
 				38338CB61C20A61000418442 /* BookmarkTableViewCell.swift in Sources */,
 				3865C7611C22FF2B00411F84 /* CategoryPostTableViewCell.swift in Sources */,
+				191E126A1C2304A20069F86A /* CategoryModalController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
