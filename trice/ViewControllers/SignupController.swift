@@ -26,6 +26,11 @@ class SignupController: UIViewController, UITextFieldDelegate{
         mailTextField.addTarget(self, action: "mailTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         pseudoTextField.addTarget(self, action: "pseudoTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         passwordTextField.addTarget(self, action: "passwordTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector : Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object : nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tap:")
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +42,14 @@ class SignupController: UIViewController, UITextFieldDelegate{
         return .LightContent
     }
 
-
+    func keyboardWillShow(notification : NSNotification){
+        
+        UIView.animateWithDuration(1, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+            self.view.frame.origin.y = -100
+            }, completion: nil)
+        
+    }
+    
     @IBAction func signupClickAction(sender: AnyObject) {
 
         if !mailTextField.text!.isEmpty && !passwordTextField.text!.isEmpty && !pseudoTextField.text!.isEmpty {
@@ -105,6 +117,18 @@ class SignupController: UIViewController, UITextFieldDelegate{
         formView.layer.cornerRadius = 3.0
         signupButton.userInteractionEnabled = false
         signupButton.alpha = 0.5
+    }
+    
+    func tap(gesture: UITapGestureRecognizer) {
+        
+        pseudoTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        mailTextField.resignFirstResponder()
+        
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+            self.view.frame.origin.y = 0
+            }, completion: nil)
+        
     }
     
     // MARK: - Check form

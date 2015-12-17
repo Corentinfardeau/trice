@@ -15,7 +15,11 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     var likes: [PFObject]?
     
     @IBOutlet weak var bookmarkTableView: UITableView!
-    
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var backgroungTitle: UILabel!
+    @IBOutlet weak var backgroundInfos: UITextView!
+    @IBOutlet weak var backgroundButton: UIButton!
+
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -31,6 +35,7 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         bookmarkTableView.addSubview(refreshControl)
         
         getLikes()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +54,16 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
             { likes in
                 
                 self.likes = likes
-                self.bookmarkTableView.reloadData()
+                
+                if(self.likes?.count == 0){
+                    self.bookmarkTableView.hidden = true
+                    self.manageBackground(true)
+                }else{
+                    self.bookmarkTableView.reloadData()
+                    self.bookmarkTableView.hidden = false
+                    self.manageBackground(false)
+                }
+                
                 
             },
             errorCallback: { error in
@@ -64,6 +78,31 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
         )
     }
     
+    func manageBackground(visible:Bool){
+        
+        if(visible){
+            
+            backgroundButton.hidden = false
+            backgroundImage.hidden = false
+            backgroundInfos.hidden = false
+            backgroungTitle.hidden = false
+            
+        }else{
+            
+            backgroundButton.hidden = true
+            backgroundImage.hidden = true
+            backgroundInfos.hidden = true
+            backgroungTitle.hidden = true
+            
+        }
+        
+    }
+    
+    @IBAction func seePostAction(sender: AnyObject) {
+        
+        prepareForSegue(<#T##segue: UIStoryboardSegue##UIStoryboardSegue#>, sender: nil)
+        
+    }
     
     
     // MARK: - TableView DataSource
@@ -78,7 +117,7 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
     }
-    
+
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) ->
         [UITableViewRowAction]? {
             let addTime = UITableViewRowAction(style: .Default, title: "Delete") {_,_ in

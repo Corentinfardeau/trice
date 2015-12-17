@@ -25,9 +25,12 @@ class SigninController: UIViewController, UITextFieldDelegate {
         passwordTextField.addTarget(self, action: "passwordTextFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector : Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object : nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tap:")
+        view.addGestureRecognizer(tapGesture)
 
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -103,6 +106,17 @@ class SigninController: UIViewController, UITextFieldDelegate {
         signinButton.userInteractionEnabled = false
         signinButton.alpha = 0.5
     }
+    
+    func tap(gesture: UITapGestureRecognizer) {
+        
+        pseudoTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+            self.view.frame.origin.y = 0
+            }, completion: nil)
+        
+    }
+
     
     // MARK: - Check form
     func checkForm(){
