@@ -402,6 +402,52 @@ class Api {
     }
     
     
+    func getPostsByCategoryLikesAndVisited(category: PFObject, successCallback: (posts: [PFObject], likes: [PFObject], visited: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+        
+        
+        var posts: [PFObject]!
+        var likes: [PFObject]!
+        var visited: [PFObject]!
+        
+        let dispatchGroup: dispatch_group_t = dispatch_group_create()
+        
+        
+        dispatch_group_enter(dispatchGroup)
+        getWallPostsByCategory(category,
+            successCallback: { res in
+                
+                posts = res
+                dispatch_group_leave(dispatchGroup)
+            },
+            errorCallback: { error in }
+        )
+        
+        dispatch_group_enter(dispatchGroup)
+        getLikes(
+            { res in
+                
+                likes = res
+                dispatch_group_leave(dispatchGroup)
+            },
+            errorCallback: { error in }
+        )
+        
+        dispatch_group_enter(dispatchGroup)
+        getVisitedPosts(
+            { res in
+                
+                visited = res
+                dispatch_group_leave(dispatchGroup)
+            },
+            errorCallback: { error in }
+        )
+        
+        dispatch_group_notify(dispatchGroup, dispatch_get_main_queue(), {
+            successCallback(posts: posts, likes: likes, visited: visited)
+        });
+        
+    }
+    
     
     func upVotePost(post: PFObject, successCallback: (post: PFObject) -> (), errorCallback: (error: NSError) -> ()) {
         

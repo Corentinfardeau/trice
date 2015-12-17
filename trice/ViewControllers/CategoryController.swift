@@ -40,7 +40,37 @@ class CategoryController: UIViewController, UITableViewDataSource, UITableViewDe
         )
         
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let segueIdentifier = segue.identifier {
+            
+            switch (segueIdentifier) {
+                
+            case CategoryDetailsController.segueIdentifier:
+                
+                let categoryDetailsViewController = segue.destinationViewController as! CategoryDetailsController
+                
+                if let indexPath = categoryTableView.indexPathForSelectedRow {
+                    
+                    categoryDetailsViewController.category = categories![indexPath.row]
+                    
+                    categoryTableView.deselectRowAtIndexPath(indexPath, animated: true)
+                }
+                
+                
+                
+                break
+                
+            default:
+                
+                break
+            }
+        }
+        
+    }
+    
+    // MARK: - TableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let categories = self.categories {
@@ -48,10 +78,6 @@ class CategoryController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             return 0
         }
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     func tableView(wallTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
