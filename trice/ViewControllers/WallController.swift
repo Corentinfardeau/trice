@@ -171,9 +171,6 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let posts = posts {
 
             let post = posts[indexPath.row]
-
-
-
             let url = NSURL(string: post["link"] as! String)!
             UIApplication.sharedApplication().openURL(url)
             Api.sharedInstance.addPostToVisited(post)
@@ -181,10 +178,6 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         wallTableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-
-    func tableView(tableView: UITableView, UILongPressGestureRecognizer indexPath: NSIndexPath) {
-        print("jhih")
     }
 
 }

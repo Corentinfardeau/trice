@@ -44,10 +44,10 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         getLikes()
+        
     }
-    
     
     func getLikes() {
         Api.sharedInstance.getLikes(
@@ -56,11 +56,9 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.likes = likes
                 
                 if(self.likes?.count == 0){
-                    self.bookmarkTableView.hidden = true
                     self.manageBackground(true)
                 }else{
                     self.bookmarkTableView.reloadData()
-                    self.bookmarkTableView.hidden = false
                     self.manageBackground(false)
                 }
                 
@@ -100,7 +98,7 @@ class BookmarkController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func seePostAction(sender: AnyObject) {
         
-//        prepareForSegue(<#T##segue: UIStoryboardSegue##UIStoryboardSegue#>, sender: nil)
+        tabBarController?.selectedIndex = 0
         
     }
     

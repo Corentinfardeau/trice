@@ -16,6 +16,7 @@ protocol CategoryDelegate : class{
 class CategoryModalController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var categorieTableView: UITableView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     var categories: [PFObject]!
     
     weak var delegate: CategoryDelegate?
@@ -24,6 +25,12 @@ class CategoryModalController: UIViewController, UITableViewDataSource, UITableV
         
         super.viewDidLoad()
         categorieTableView.tableFooterView = UIView()
+        
+        let image = UIImage(named: "gradient.jpg")! as UIImage
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         Api.sharedInstance.getCategories(
             { categories in

@@ -22,6 +22,8 @@
 		1969F6791C205BAB00382AB5 /* SigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1969F6781C205BAB00382AB5 /* SigninController.swift */; };
 		199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199BF3CA1C202382004A4585 /* PostTableViewCell.swift */; };
 		19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D570A61C21A22700869BE3 /* ProfileController.swift */; };
+		19E3204F1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E3204E1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift */; };
+		19E320511C233E0300B7B9B8 /* OnBoardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E320501C233E0300B7B9B8 /* OnBoardingController.swift */; };
 		19EEA5301C2309750080D242 /* CategoryModalViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */; };
 		38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38338CB31C20A26D00418442 /* BookmarkController.swift */; };
 		38338CB61C20A61000418442 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */; };
@@ -84,6 +86,8 @@
 		1969F6781C205BAB00382AB5 /* SigninController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninController.swift; sourceTree = "<group>"; };
 		199BF3CA1C202382004A4585 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		19D570A61C21A22700869BE3 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		19E3204E1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingCollectionViewCell.swift; path = ../../../../../Downloads/Waltrough_Ravi/Waltrough_Ravi/OnBoardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		19E320501C233E0300B7B9B8 /* OnBoardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnBoardingController.swift; path = ../../../../../Downloads/Waltrough_Ravi/Waltrough_Ravi/OnBoardingController.swift; sourceTree = "<group>"; };
 		19EEA52F1C2309750080D242 /* CategoryModalViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModalViewCell.swift; sourceTree = "<group>"; };
 		365083E4AFE81887EA83236A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		38338CB31C20A26D00418442 /* BookmarkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		389AF0B81C2017D700319778 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				19E3204E1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift */,
 				194B25161C209DAA00ED6B75 /* CustomNavbar.swift */,
 				199BF3CA1C202382004A4585 /* PostTableViewCell.swift */,
 				38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */,
@@ -293,6 +298,7 @@
 		389AF0B91C2017D700319778 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				19E320501C233E0300B7B9B8 /* OnBoardingController.swift */,
 				389AF0BA1C2017D700319778 /* WallController.swift */,
 				1969F6761C205B4F00382AB5 /* SignupController.swift */,
 				1969F6781C205BAB00382AB5 /* SigninController.swift */,
@@ -532,6 +538,8 @@
 				38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */,
 				38F563291C1F329100FA6D5A /* Api.swift in Sources */,
 				19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */,
+				19E320511C233E0300B7B9B8 /* OnBoardingController.swift in Sources */,
+				19E3204F1C233DB400B7B9B8 /* OnBoardingCollectionViewCell.swift in Sources */,
 				19EEA5301C2309750080D242 /* CategoryModalViewCell.swift in Sources */,
 				1969F6771C205B4F00382AB5 /* SignupController.swift in Sources */,
 				199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */,

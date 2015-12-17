@@ -88,17 +88,6 @@ class CreateController: UIViewController, UITextViewDelegate, CategoryDelegate {
     
     func setUI(){
         
-        //Border-bottom
-        let bottomBorderLink = CALayer()
-        bottomBorderLink.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
-        bottomBorderLink.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
-        linkTextField.layer.addSublayer(bottomBorderLink)
-        
-        let bottomBorderButton = CALayer()
-        bottomBorderButton.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
-        bottomBorderButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
-        categoryButton.layer.addSublayer(bottomBorderButton)
-        
         //Padding
         let paddingTextField = UIView(frame: CGRectMake(0, 0, 40, linkTextField.frame.height))
         linkTextField.leftView = paddingTextField
