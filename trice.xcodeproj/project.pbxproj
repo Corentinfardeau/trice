@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191E12661C22E8110069F86A /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E12651C22E8110069F86A /* CategoryController.swift */; };
+		191E12681C22EBC30069F86A /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E12671C22EBC30069F86A /* CategoryTableViewCell.swift */; };
 		194B25171C209DAA00ED6B75 /* CustomNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B25161C209DAA00ED6B75 /* CustomNavbar.swift */; };
 		194B251D1C20C24100ED6B75 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B251C1C20C24100ED6B75 /* CreateController.swift */; };
 		195537C51C1EEF0700713AF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195537C41C1EEF0700713AF5 /* AppDelegate.swift */; };
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		191E12651C22E8110069F86A /* CategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
+		191E12671C22EBC30069F86A /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		194B25161C209DAA00ED6B75 /* CustomNavbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavbar.swift; sourceTree = "<group>"; };
 		194B251C1C20C24100ED6B75 /* CreateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 		195537C11C1EEF0700713AF5 /* trice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +275,7 @@
 				194B25161C209DAA00ED6B75 /* CustomNavbar.swift */,
 				199BF3CA1C202382004A4585 /* PostTableViewCell.swift */,
 				38338CB51C20A61000418442 /* BookmarkTableViewCell.swift */,
+				191E12671C22EBC30069F86A /* CategoryTableViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				38338CB31C20A26D00418442 /* BookmarkController.swift */,
 				194B251C1C20C24100ED6B75 /* CreateController.swift */,
 				19D570A61C21A22700869BE3 /* ProfileController.swift */,
+				191E12651C22E8110069F86A /* CategoryController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -510,11 +516,13 @@
 				194B25171C209DAA00ED6B75 /* CustomNavbar.swift in Sources */,
 				1969F6791C205BAB00382AB5 /* SigninController.swift in Sources */,
 				389AF0BB1C2017D700319778 /* WallController.swift in Sources */,
+				191E12661C22E8110069F86A /* CategoryController.swift in Sources */,
 				38338CB41C20A26D00418442 /* BookmarkController.swift in Sources */,
 				38F563291C1F329100FA6D5A /* Api.swift in Sources */,
 				19D570A71C21A22700869BE3 /* ProfileController.swift in Sources */,
 				1969F6771C205B4F00382AB5 /* SignupController.swift in Sources */,
 				199BF3CB1C202382004A4585 /* PostTableViewCell.swift in Sources */,
+				191E12681C22EBC30069F86A /* CategoryTableViewCell.swift in Sources */,
 				38338CB61C20A61000418442 /* BookmarkTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
