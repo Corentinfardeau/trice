@@ -45,6 +45,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if Api.sharedInstance.getCurrentUser() == nil {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
     @IBAction func startButton(sender: AnyObject) {
         
     }
