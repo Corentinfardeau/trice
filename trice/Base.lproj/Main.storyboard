@@ -530,6 +530,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Lkk-CS-rz6" kind="relationship" relationship="viewControllers" id="Wpb-La-UhK"/>
+                        <segue destination="7Va-uO-0Zl" kind="relationship" relationship="viewControllers" id="0aF-eh-DZC"/>
                         <segue destination="JIg-jz-nq9" kind="relationship" relationship="viewControllers" id="GMJ-lP-5PE"/>
                         <segue destination="mmS-I3-gHH" kind="relationship" relationship="viewControllers" id="5sb-UZ-Stn"/>
                     </connections>
@@ -992,6 +993,25 @@
             </objects>
             <point key="canvasLocation" x="590" y="495"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="E5s-ev-gk2">
+            <objects>
+                <viewController id="7Va-uO-0Zl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RCv-rH-8be"/>
+                        <viewControllerLayoutGuide type="bottom" id="k8h-Iv-HU3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CrT-V4-L6q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="Category" id="z5A-Lg-Qan"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ynC-i2-Ffz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-227" y="1906"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="3JC-1h-t4P">
             <objects>
@@ -1031,6 +1051,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Category" width="16" height="17"/>
         <image name="add-post" width="19" height="24"/>
         <image name="background_home" width="375" height="667"/>
         <image name="chrono" width="19" height="22"/>

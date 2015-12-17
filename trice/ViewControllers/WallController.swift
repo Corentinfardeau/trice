@@ -39,7 +39,6 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         getPosts()
         
-
     }
 
     override func viewDidAppear(animated: Bool) {

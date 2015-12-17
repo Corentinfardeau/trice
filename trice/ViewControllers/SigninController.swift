@@ -89,7 +89,6 @@ class SigninController: UIViewController, UITextFieldDelegate {
                 }
             )
             
-            
         } else {
             showAlert("Oups", message: "Missing informations.")
         }
