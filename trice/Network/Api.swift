@@ -227,7 +227,7 @@ class Api {
         return NSDate(timeIntervalSince1970: timestamp)
     }
     
-    func createPost(title: String, link: String, successCallback: (post: PFObject) -> (), errorCallback: (error: NSError) -> ()) {
+    func createPost(title: String, link: String, category: PFObject, successCallback: (post: PFObject) -> (), errorCallback: (error: NSError) -> ()) {
 
         if let currentUser = PFUser.currentUser() {
         
@@ -237,6 +237,7 @@ class Api {
             post["title"] = title
             post["link"] = link
             post["expiresAt"] = self.addHoursToDate(NSDate(), hours: 12)
+            post["category"] = category
             
             post.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                 if (success) {
@@ -335,6 +336,25 @@ class Api {
         }
     }
     
+    
+    func getWallPostsByCategory(category: PFObject, successCallback: (posts: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+        let query = PFQuery(className: "Post")
+        
+        query.whereKey("expiresAt", greaterThan: NSDate())
+        query.orderByDescending("expiresAt")
+        query.whereKey("category", equalTo: category)
+        
+        query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                successCallback(posts: posts!)
+            } else {
+                errorCallback(error: error!)
+            }
+        }
+    }
+    
+    
     func getPostsLikesAndVisited(successCallback: (posts: [PFObject], likes: [PFObject], visited: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
         
         
@@ -427,6 +447,22 @@ class Api {
                 "NSLocalizedDescription": "User has no hours left"
             ]))
     
+        }
+    }
+    
+    
+    // MARK: - Category
+    
+    func getCategories(successCallback: (categories: [PFObject]) -> (), errorCallback: (error: NSError) -> ()) {
+        let query = PFQuery(className: "Category")
+        
+        query.findObjectsInBackgroundWithBlock { (categories: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                successCallback(categories: categories!)
+            } else {
+                errorCallback(error: error!)
+            }
         }
     }
 }

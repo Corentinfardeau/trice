@@ -7,22 +7,51 @@
 //
 
 import UIKit
+import Parse
 
-class CreateController: UIViewController, UITextViewDelegate {
+class CreateController: UIViewController, UITextViewDelegate, UIPickerViewDataSource,UIPickerViewDelegate {
 
     @IBOutlet weak var titleLengthLabel: UILabel!
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var categoryPicker: UIPickerView!
+    
+    
+    var categories: [PFObject]!
+    var pickerCategories: [[String]] = [["Category"]]
+    var selectedCategory: PFObject!
+    
     private var maxTitleLength = 35
     private var kbHeight: CGFloat!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         postTextView.delegate = self
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        
         setUI()
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector : Selector("keyboardWasShown:"), name:UIKeyboardWillShowNotification, object : nil)
+        
+        Api.sharedInstance.getCategories(
+            { categories in
+                
+                self.categories = categories
+                self.pickerCategories = [categories.map({ (cat: PFObject) -> String in
+                    return cat["name"] as! String
+                })]
+                
+                self.categoryPicker.reloadAllComponents()
+            },
+            errorCallback:  { error in
+                
+            }
+        )
         
     }
     
@@ -30,6 +59,36 @@ class CreateController: UIViewController, UITextViewDelegate {
         linkTextField.resignFirstResponder()
         postTextView.resignFirstResponder()
     }
+    
+    
+    // MARK: - Picker
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return pickerCategories.count
+    }
+    
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerCategories[component].count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerCategories[component][row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        
+        let categoryName = pickerCategories[component][row]
+        
+        if let found = categories.map({ $0["name"] as! String }).indexOf(categoryName) {
+            selectedCategory = categories[found]
+        }
+    }
+    
+    
+    
+    // MARK: - TextView
     
     func textViewDidBeginEditing(postTextView: UITextView) {
         if postTextView.textColor == UIColor.lightGrayColor() {
@@ -137,7 +196,7 @@ class CreateController: UIViewController, UITextViewDelegate {
                     let title = postTextView.text!
                     let link = linkTextField.text!
                     
-                    Api.sharedInstance.createPost(title, link: link,
+                    Api.sharedInstance.createPost(title, link: link, category: selectedCategory,
                         successCallback: { post in
                             
                             self.dismissViewControllerAnimated(true, completion: nil)

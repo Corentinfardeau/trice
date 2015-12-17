@@ -879,7 +879,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Paste your link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDb-Rq-Ek0">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="164" width="600" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="KqX-h7-9qQ"/>
                                 </constraints>
@@ -887,31 +887,44 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What did you find ?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GSW-HV-Oet">
-                                <rect key="frame" x="0.0" y="124" width="600" height="476"/>
+                                <rect key="frame" x="0.0" y="224" width="600" height="376"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dC-Sp-EAO">
-                                <rect key="frame" x="559" y="559.5" width="21" height="21"/>
+                                <rect key="frame" x="559" y="560" width="20.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="IaS-pU-JV2">
-                                <rect key="frame" x="12" y="86" width="15" height="15"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="yph-bM-13g">
+                                <rect key="frame" x="7" y="186" width="15" height="15"/>
                             </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNN-Z3-ASg">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="RSS-fe-iwE"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="USB-tK-BjW" id="PlE-Hy-5rG"/>
+                                    <outlet property="delegate" destination="USB-tK-BjW" id="m19-WW-fUz"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GSW-HV-Oet" firstAttribute="top" secondItem="dDb-Rq-Ek0" secondAttribute="bottom" id="3r9-2Z-cmr"/>
+                            <constraint firstItem="KNN-Z3-ASg" firstAttribute="leading" secondItem="saL-44-pq8" secondAttribute="leadingMargin" constant="-20" id="Jia-lB-N1u"/>
                             <constraint firstItem="GSW-HV-Oet" firstAttribute="leading" secondItem="saL-44-pq8" secondAttribute="leading" id="LYv-19-7Nc"/>
                             <constraint firstItem="NJJ-aC-gh1" firstAttribute="top" secondItem="2dC-Sp-EAO" secondAttribute="bottom" constant="20" id="Ose-cD-j0h"/>
                             <constraint firstAttribute="trailing" secondItem="GSW-HV-Oet" secondAttribute="trailing" id="Y4U-ty-yTW"/>
                             <constraint firstAttribute="trailing" secondItem="dDb-Rq-Ek0" secondAttribute="trailing" id="dMo-Op-vcd"/>
                             <constraint firstItem="NJJ-aC-gh1" firstAttribute="top" secondItem="GSW-HV-Oet" secondAttribute="bottom" identifier="bottomConstraint" id="ebt-Hj-dKD"/>
-                            <constraint firstItem="dDb-Rq-Ek0" firstAttribute="top" secondItem="c1N-Lc-6k5" secondAttribute="bottom" id="hjR-HT-8Ad"/>
+                            <constraint firstItem="dDb-Rq-Ek0" firstAttribute="top" secondItem="c1N-Lc-6k5" secondAttribute="bottom" constant="100" id="hjR-HT-8Ad"/>
                             <constraint firstItem="dDb-Rq-Ek0" firstAttribute="leading" secondItem="saL-44-pq8" secondAttribute="leading" id="ioC-fg-9PD"/>
+                            <constraint firstItem="KNN-Z3-ASg" firstAttribute="top" secondItem="c1N-Lc-6k5" secondAttribute="bottom" id="mz1-7T-yjg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KNN-Z3-ASg" secondAttribute="trailing" constant="-20" id="vV0-uL-TQG"/>
                             <constraint firstItem="2dC-Sp-EAO" firstAttribute="trailing" secondItem="saL-44-pq8" secondAttribute="trailingMargin" id="wq9-wu-4P3"/>
                         </constraints>
                     </view>
@@ -931,6 +944,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="Ose-cD-j0h" id="idf-P1-CVe"/>
+                        <outlet property="categoryPicker" destination="KNN-Z3-ASg" id="wg9-WC-SZS"/>
                         <outlet property="linkTextField" destination="dDb-Rq-Ek0" id="FPr-v7-TP9"/>
                         <outlet property="postTextView" destination="GSW-HV-Oet" id="byP-Ox-C1v"/>
                         <outlet property="titleLengthLabel" destination="2dC-Sp-EAO" id="b2z-wN-iMR"/>

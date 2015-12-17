@@ -38,6 +38,7 @@ class WallController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.navigationItem.titleView = imageView
 
         getPosts()
+        
 
     }
 
