@@ -16,7 +16,7 @@ class CategoryController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.categoryTableView.backgroundColor = UIColor.clearColor()
         getCategories()
     }
 
@@ -64,6 +64,10 @@ class CategoryController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
         
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.clearColor()
     }
     
     /*

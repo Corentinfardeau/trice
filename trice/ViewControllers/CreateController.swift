@@ -9,19 +9,16 @@
 import UIKit
 import Parse
 
-class CreateController: UIViewController, UITextViewDelegate, UIPickerViewDataSource,UIPickerViewDelegate {
 
+class CreateController: UIViewController, UITextViewDelegate, CategoryDelegate {
+    
     @IBOutlet weak var titleLengthLabel: UILabel!
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var postTextView: UITextView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var categoryButton: UIButton!
     
-    
-    var categories: [PFObject]!
-    var pickerCategories: [[String]] = [["Category"]]
-    var selectedCategory: PFObject!
-    
+    private var selectedCategory: PFObject!
     private var maxTitleLength = 35
     private var kbHeight: CGFloat!
     
@@ -30,28 +27,10 @@ class CreateController: UIViewController, UITextViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         
         postTextView.delegate = self
-        categoryPicker.delegate = self
-        categoryPicker.dataSource = self
         
         setUI()
         
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector : Selector("keyboardWasShown:"), name:UIKeyboardWillShowNotification, object : nil)
-        
-        Api.sharedInstance.getCategories(
-            { categories in
-                
-                self.categories = categories
-                self.pickerCategories = [categories.map({ (cat: PFObject) -> String in
-                    return cat["name"] as! String
-                })]
-                
-                self.categoryPicker.reloadAllComponents()
-            },
-            errorCallback:  { error in
-                
-            }
-        )
         
     }
     
@@ -60,34 +39,12 @@ class CreateController: UIViewController, UITextViewDelegate, UIPickerViewDataSo
         postTextView.resignFirstResponder()
     }
     
-    
-    // MARK: - Picker
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return pickerCategories.count
-    }
-    
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerCategories[component].count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerCategories[component][row]
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
+    func getCategory(value: PFObject) {
         
-        let categoryName = pickerCategories[component][row]
+        self.categoryButton.setTitle(value["name"] as? String, forState: .Normal)
+        selectedCategory = value
         
-        if let found = categories.map({ $0["name"] as! String }).indexOf(categoryName) {
-            selectedCategory = categories[found]
-        }
     }
-    
-    
-    
     // MARK: - TextView
     
     func textViewDidBeginEditing(postTextView: UITextView) {
@@ -127,19 +84,20 @@ class CreateController: UIViewController, UITextViewDelegate, UIPickerViewDataSo
 
     }
     
-
-    
     // Mark: - SetUI
     
     func setUI(){
         
         //Border-bottom
-        linkTextField.borderStyle = UITextBorderStyle.None
+        let bottomBorderLink = CALayer()
+        bottomBorderLink.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
+        bottomBorderLink.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
+        linkTextField.layer.addSublayer(bottomBorderLink)
         
-        let bottomBorder = CALayer()
-        bottomBorder.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
-        bottomBorder.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
-        linkTextField.layer.addSublayer(bottomBorder)
+        let bottomBorderButton = CALayer()
+        bottomBorderButton.frame = CGRectMake(0.0, linkTextField.frame.size.height - 1, linkTextField.frame.size.width, 1.0);
+        bottomBorderButton.backgroundColor = UIColor(red:0.92, green:0.92, blue:0.92, alpha:1.0).CGColor
+        categoryButton.layer.addSublayer(bottomBorderButton)
         
         //Padding
         let paddingTextField = UIView(frame: CGRectMake(0, 0, 40, linkTextField.frame.height))
@@ -182,6 +140,12 @@ class CreateController: UIViewController, UITextViewDelegate, UIPickerViewDataSo
     }
     
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "selectCategory"){
+            let selectCategoryViewController = segue.destinationViewController as! CategoryModalController
+            selectCategoryViewController.delegate = self
+        }
+    }
     // MARK: - Actions
     
     
